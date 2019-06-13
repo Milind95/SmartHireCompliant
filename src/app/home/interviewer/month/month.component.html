@@ -1,0 +1,65 @@
+<div class="legends">
+  <ion-chip class="availableIcon">
+    <ion-label id="available">Available</ion-label>
+  </ion-chip>
+  <ion-chip class="bookedIcon">
+    <ion-label id="booked">Booked</ion-label>
+  </ion-chip>
+  <ion-chip class="interviewedIcon">
+    <ion-label id="interviewed">Interviewed</ion-label>
+  </ion-chip>
+  <ion-chip *ngIf="isRecruiter" class="interviewerAvailabilityIcon">
+    <ion-label id="interviewerAvailability">Interviewer Availability</ion-label>
+  </ion-chip>
+</div>
+
+
+<mwl-calendar-month-view class="monthClass" [viewDate]="viewDate" [events]="events" [refresh]="refresh" (dayClicked)="dayClicked($event.day)"
+  (eventTimesChanged)="eventTimesChanged($event)" [cellTemplate]="customCellTemplate">
+</mwl-calendar-month-view>
+
+<ng-template #customCellTemplate let-day="day" let-locale="locale">
+  <div class="cal-cell-top" [ngClass]="{disableBg : todayDate.getTime() > day.date.getTime()}">
+    <span class="cal-day-number">{{ day.date | calendarDate:'monthViewDayNumber':locale }}</span>
+  </div>
+  <div class="eventContainer" [ngClass]="{disableBg : todayDate.getTime() > day.date.getTime()}">
+    <div *ngIf="day.events.length !== 0">
+      <span *ngIf="day.events[0].availableCount">
+        <span class="badge available" *ngIf="day.events[0].availableCount > 0">{{ day.events[0].availableCount }}</span>
+      </span>
+      <span *ngIf="day.events[0].bookedCount">
+        <span class="badge booked" *ngIf="day.events[0].bookedCount > 0">{{ day.events[0].bookedCount }}</span>
+      </span>
+      <span *ngIf="day.events[0].interviewedCount">
+        <span class="badge interviewed" *ngIf="day.events[0].interviewedCount > 0">{{ day.events[0].interviewedCount }}</span>
+      </span>
+      <span *ngIf="day.events[0].interviewerAvailabilityCount">
+        <span class="badge interviewerAvailability" *ngIf="day.events[0].interviewerAvailabilityCount > 0">{{ day.events[0].interviewerAvailabilityCount }}</span>
+      </span>
+    </div>
+  </div>
+</ng-template>
+
+<ion-fab *ngIf="!isFilterApplied && isRecruiter" vertical="bottom" horizontal="end" slot="fixed" (click)="gotoFilterPage()">
+  <ion-fab-button>
+    <ion-icon name="funnel"></ion-icon>
+  </ion-fab-button>
+</ion-fab>
+
+
+<ion-fab *ngIf="isFilterApplied" slot="fixed" vertical="bottom" horizontal="end">
+  <ion-fab-button color="warning">
+    <ion-icon name="funnel"></ion-icon>
+    <ion-badge color="success">{{filterCount}}</ion-badge>
+  </ion-fab-button>
+
+  <ion-fab-list side="start">
+    <ion-fab-button (click)="gotoFilterPage()" color="primary">
+      <ion-icon size="default" name="funnel"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-button color="danger" (click)="clearFilters()">
+      <ion-icon size="large" name="close-circle-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab-list>
+
+</ion-fab>

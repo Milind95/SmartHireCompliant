@@ -1,0 +1,7 @@
+{
+  "name": "SmartHirePwa",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

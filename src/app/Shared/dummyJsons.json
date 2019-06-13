@@ -1,0 +1,380 @@
+{
+    "response": [
+        [
+            {
+                "calendarId": 12059,
+                "id": 134179,
+                "slot": {
+                    "emailId": null,
+                    "to": 1543992000000,
+                    "from": 1543988400000
+                },
+                "details": {
+                    "comments": "",
+                    "candidateName": "ABC",
+                    "interviewType": "L1",
+                    "recruiterName": "Shitiz Mathur\n",
+                    "technology": "Java",
+                    "feedbackStatus": null
+                },
+                "interviewDetails": {
+                    "empId": 134179,
+                    "grade": "C2",
+                    "organization": "TCG - TCG",
+                    "name": "Akshat Mangal",
+                    "email": "akshat.mangal@capgemini.com"
+                },
+                "participationTypeId": 2,
+                "booked": true
+            },
+            {
+                "calendarId": 12062,
+                "id": 134179,
+                "slot": {
+                    "emailId": null,
+                    "to": 1544070600000,
+                    "from": 1544067000000
+                },
+                "details": {
+                    "comments": "",
+                    "candidateName": "ABC",
+                    "interviewType": "L1",
+                    "recruiterName": "Shitiz Mathur\n",
+                    "technology": "Java",
+                    "feedbackStatus": null
+                },
+                "interviewDetails": {
+                    "empId": 134179,
+                    "grade": "C2",
+                    "organization": "TCG - TCG",
+                    "name": "Akshat Mangal",
+                    "email": "akshat.mangal@capgemini.com"
+                },
+                "participationTypeId": 2,
+                "booked": true
+            },
+            {
+                "calendarId": 12490,
+                "id": 134179,
+                "slot": {
+                    "emailId": null,
+                    "to": 1544617800000,
+                    "from": 1544614200000
+                },
+                "details": null,
+                "interviewDetails": {
+                    "empId": 134179,
+                    "grade": "C2",
+                    "organization": "TCG - TCG",
+                    "name": "Akshat Mangal",
+                    "email": "akshat.mangal@capgemini.com"
+                },
+                "participationTypeId": 2,
+                "booked": false
+            },
+            {
+                "calendarId": 10522,
+                "id": 134179,
+                "slot": {
+                    "emailId": null,
+                    "to": 1540870200000,
+                    "from": 1540866600000
+                },
+                "details": {
+                    "comments": "",
+                    "candidateName": "Milind",
+                    "interviewType": "L1",
+                    "recruiterName": "Milind Rohokale",
+                    "technology": "Java",
+                    "feedbackStatus": "On Hold"
+                },
+                "interviewDetails": {
+                    "empId": 134179,
+                    "grade": "C2",
+                    "organization": "TCG - TCG",
+                    "name": "Akshat Mangal",
+                    "email": "akshat.mangal@capgemini.com"
+                },
+                "participationTypeId": 1,
+                "booked": true
+            },
+            {
+                "calendarId": 11611,
+                "id": 134179,
+                "slot": {
+                    "emailId": null,
+                    "to": 1542774600000,
+                    "from": 1542771000000
+                },
+                "details": {
+                    "comments": "",
+                    "candidateName": "Vasu",
+                    "interviewType": "L1",
+                    "recruiterName": "Milind Rohokale",
+                    "technology": "Java",
+                    "feedbackStatus": null
+                },
+                "interviewDetails": {
+                    "empId": 134179,
+                    "grade": "C2",
+                    "organization": "TCG - TCG",
+                    "name": "Akshat Mangal",
+                    "email": "akshat.mangal@capgemini.com"
+                },
+                "participationTypeId": 2,
+                "booked": true
+            },
+            {
+                "calendarId": 12371,
+                "id": 134179,
+                "slot": {
+                    "emailId": null,
+                    "to": 1545190200000,
+                    "from": 1545186600000
+                },
+                "details": null,
+                "interviewDetails": {
+                    "empId": 134179,
+                    "grade": "C2",
+                    "organization": "TCG - TCG",
+                    "name": "Akshat Mangal",
+                    "email": "akshat.mangal@capgemini.com"
+                },
+                "participationTypeId": 1,
+                "booked": false
+            },
+            {
+                "calendarId": 12373,
+                "id": 134179,
+                "slot": {
+                    "emailId": null,
+                    "to": 1544589000000,
+                    "from": 1544585400000
+                },
+                "details": null,
+                "interviewDetails": {
+                    "empId": 134179,
+                    "grade": "C2",
+                    "organization": "TCG - TCG",
+                    "name": "Akshat Mangal",
+                    "email": "akshat.mangal@capgemini.com"
+                },
+                "participationTypeId": 2,
+                "booked": false
+            },
+            {
+                "calendarId": 12374,
+                "id": 134179,
+                "slot": {
+                    "emailId": null,
+                    "to": 1544592600000,
+                    "from": 1544589000000
+                },
+                "details": null,
+                "interviewDetails": {
+                    "empId": 134179,
+                    "grade": "C2",
+                    "organization": "TCG - TCG",
+                    "name": "Akshat Mangal",
+                    "email": "akshat.mangal@capgemini.com"
+                },
+                "participationTypeId": 2,
+                "booked": false
+            },
+            {
+                "calendarId": 12375,
+                "id": 134179,
+                "slot": {
+                    "emailId": null,
+                    "to": 1544596200000,
+                    "from": 1544592600000
+                },
+                "details": {
+                    "comments": "",
+                    "candidateName": "TestCandidate",
+                    "interviewType": "L1",
+                    "recruiterName": "Shitiz Mathur\n",
+                    "technology": "Java",
+                    "feedbackStatus": null
+                },
+                "interviewDetails": {
+                    "empId": 134179,
+                    "grade": "C2",
+                    "organization": "TCG - TCG",
+                    "name": "Akshat Mangal",
+                    "email": "akshat.mangal@capgemini.com"
+                },
+                "participationTypeId": 2,
+                "booked": true
+            },
+            {
+                "calendarId": 11212,
+                "id": 134179,
+                "slot": {
+                    "emailId": null,
+                    "to": 1542166200000,
+                    "from": 1542162600000
+                },
+                "details": {
+                    "comments": "",
+                    "candidateName": "Milind",
+                    "interviewType": "L1",
+                    "recruiterName": "Milind Rohokale",
+                    "technology": "Java",
+                    "feedbackStatus": "On Hold"
+                },
+                "interviewDetails": {
+                    "empId": 134179,
+                    "grade": "C2",
+                    "organization": "TCG - TCG",
+                    "name": "Akshat Mangal",
+                    "email": "akshat.mangal@capgemini.com"
+                },
+                "participationTypeId": 1,
+                "booked": true
+            },
+            {
+                "calendarId": 12377,
+                "id": 134179,
+                "slot": {
+                    "emailId": null,
+                    "to": 1544671800000,
+                    "from": 1544668200000
+                },
+                "details": null,
+                "interviewDetails": {
+                    "empId": 134179,
+                    "grade": "C2",
+                    "organization": "TCG - TCG",
+                    "name": "Akshat Mangal",
+                    "email": "akshat.mangal@capgemini.com"
+                },
+                "participationTypeId": 2,
+                "booked": false
+            },
+            {
+                "calendarId": 12376,
+                "id": 134179,
+                "slot": {
+                    "emailId": null,
+                    "to": 1544758200000,
+                    "from": 1544754600000
+                },
+                "details": null,
+                "interviewDetails": {
+                    "empId": 134179,
+                    "grade": "C2",
+                    "organization": "TCG - TCG",
+                    "name": "Akshat Mangal",
+                    "email": "akshat.mangal@capgemini.com"
+                },
+                "participationTypeId": 2,
+                "booked": false
+            },
+            {
+                "calendarId": 12378,
+                "id": 134179,
+                "slot": {
+                    "emailId": null,
+                    "to": 1545103800000,
+                    "from": 1545100200000
+                },
+                "details": null,
+                "interviewDetails": {
+                    "empId": 134179,
+                    "grade": "C2",
+                    "organization": "TCG - TCG",
+                    "name": "Akshat Mangal",
+                    "email": "akshat.mangal@capgemini.com"
+                },
+                "participationTypeId": 2,
+                "booked": false
+            },
+            {
+                "calendarId": 12379,
+                "id": 134179,
+                "slot": {
+                    "emailId": null,
+                    "to": 1545017400000,
+                    "from": 1545013800000
+                },
+                "details": null,
+                "interviewDetails": {
+                    "empId": 134179,
+                    "grade": "C2",
+                    "organization": "TCG - TCG",
+                    "name": "Akshat Mangal",
+                    "email": "akshat.mangal@capgemini.com"
+                },
+                "participationTypeId": 2,
+                "booked": false
+            },
+            {
+                "calendarId": 12380,
+                "id": 134179,
+                "slot": {
+                    "emailId": null,
+                    "to": 1545190200000,
+                    "from": 1545186600000
+                },
+                "details": null,
+                "interviewDetails": {
+                    "empId": 134179,
+                    "grade": "C2",
+                    "organization": "TCG - TCG",
+                    "name": "Akshat Mangal",
+                    "email": "akshat.mangal@capgemini.com"
+                },
+                "participationTypeId": 2,
+                "booked": false
+            },
+            {
+                "calendarId": 12381,
+                "id": 134179,
+                "slot": {
+                    "emailId": null,
+                    "to": 1545276600000,
+                    "from": 1545273000000
+                },
+                "details": null,
+                "interviewDetails": {
+                    "empId": 134179,
+                    "grade": "C2",
+                    "organization": "TCG - TCG",
+                    "name": "Akshat Mangal",
+                    "email": "akshat.mangal@capgemini.com"
+                },
+                "participationTypeId": 2,
+                "booked": false
+            },
+            {
+                "calendarId": 13767,
+                "id": 134179,
+                "slot": {
+                    "emailId": null,
+                    "to": 1551929400000,
+                    "from": 1551925800000
+                },
+                "details": {
+                    "comments": "",
+                    "candidateName": "Candidate",
+                    "interviewType": "L2",
+                    "recruiterName": "Milind Rohokale",
+                    "technology": "Java",
+                    "feedbackStatus": "On Hold"
+                },
+                "interviewDetails": {
+                    "empId": 134179,
+                    "grade": "C2",
+                    "organization": "TCG - TCG",
+                    "name": "Akshat Mangal",
+                    "email": "akshat.mangal@capgemini.com"
+                },
+                "participationTypeId": 2,
+                "booked": true
+            }
+        ]
+    ],
+    "message": null,
+    "exception": null
+}

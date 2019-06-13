@@ -1,0 +1,307 @@
+<ngx-spinner bdColor="rgba(51,51,51,0.8)"  size="medium"  color="#fff"  type="timer">
+  <p style="font-size: 20px; color: white">Please Wait...</p>
+</ngx-spinner>
+
+
+
+<ion-content *ngIf="devWidth <= 768 && mobileView">
+  <ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <h5>Report Filter</h5>
+        <!-- <ion-back-button text="Filters" icon="arrow-round-back"></ion-back-button> -->
+      </ion-buttons>
+
+      <ion-button (click)="OnClear()" fill="outline" class="rightFloat">
+        <ion-icon name="trash"></ion-icon>clear
+      </ion-button>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content style="padding: 0px">
+    <p-card>
+      <ion-grid>
+        <div class="container-fluid" [ngStyle]="{'background':backdayColor}">
+          <p style="font-weight: bold; float:center;">Date and Days</p>
+        </div>
+        <ion-row>
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-sm-6 col-xs-12 " style="background-color:#D7DBDD">
+                <label class="calenderBorder" style="margin-top: 4px;height: 50px;background-color: #D7DBDD;border: 1px solid black;border-radius: 8px;width: 100%;">
+                  <!-- <ion-icon class="icon" style="color: black;" ios="ios-calendar" md="md-calendar"></ion-icon> -->
+                  <input style="display: inline-block" readonly placeholder="Pick the Date" class="dateSet fromDateWidth" [(ngModel)]="dateTimeRange"
+                    [(ngModel)]="dateTimeRange" [selectMode]="'range'" [owlDateTimeTrigger]="dtRange1" [owlDateTime]="dtRange1"
+                    (dateTimeChange)="getDateRange($event)">
+                  <ion-icon class="icon" style="color: black;" ios="ios-calendar" md="md-calendar"></ion-icon>
+                  <owl-date-time [pickerType]="'calendar'" #dtRange1></owl-date-time>
+                </label>
+
+              </div>
+              <div class="col-sm-6 col-xs-12" style="background-color:#D7DBDD;">
+                <mat-form-field appearance="outline" style="width: 100%;">
+                  <mat-label style="color: black">Select Day</mat-label>
+                  <mat-select [(ngModel)]="selectedDay" (selectionChange)="seletedDayValue($event.value)">
+                    <mat-option *ngFor="let day of days" [value]="day.id">
+                      {{day.viewValue}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+        </ion-row>
+        <ion-row>
+          <div class="container-fluid" [ngStyle]="{'background':backTechColor}">
+            <p style="font-weight: bold; "> Technology
+              <mat-slide-toggle style="color: black;float:right;" [(ngModel)]="toggleTechChange" (change)="techCheckbox($event)">{{techCheckboxValue}}</mat-slide-toggle>
+            </p>
+          </div>
+
+
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-sm-12 col-xs-12" style="background-color:#D7DBDD;">
+                <mat-form-field appearance="outline" style="width: 100%!important; margin-top:5px">
+                  <mat-label style="color: black;">Select Technology</mat-label>
+                  <mat-select style="color: black" [(ngModel)]="selectedTechnology" multiple [disabled]="checkboxDisabled" (selectionChange)="seletedTechValue($event.value)">
+                    <mat-option>
+                      <ngx-mat-select-search [placeholderLabel]="'Search...'" [noEntriesFoundLabel]="'No matching Technology found'" ngModel (ngModelChange)="filterMyOptions($event)"></ngx-mat-select-search>
+                    </mat-option>
+                    <mat-option style="color: black" *ngFor="let tech of technologyArray" [value]="tech.id">{{tech.name}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+          <!-- <ion-col class="selfCentreAlign noBorder" align-self-center size-md="6" size-lg="6" size-xs="12">
+                <mat-slide-toggle style="color: black" [(ngModel)]="toggleTechChange" (change)="techCheckbox($event)">{{techCheckboxValue}} Technology</mat-slide-toggle>
+              </ion-col> -->
+        </ion-row>
+        <ion-row>
+          <div class="container-fluid" [ngStyle]="{'background':backOrgColor}">
+            <p style="font-weight: bold;">Organisation
+              <mat-slide-toggle style="color: black; float:right;" [(ngModel)]="toggleOrgChange" (change)="orgCheckbox($event)">{{orgCheckboxValue}} </mat-slide-toggle>
+            </p>
+          </div>
+          <div class="container-fluid">
+
+            <div class="row">
+              <div class="col-sm-12 col-xs-12" style="background-color:#D7DBDD;">
+                <mat-form-field appearance="outline" style="width: 100%; ; margin-top:5px">
+                  <mat-label style="color: black;">Select Organisation</mat-label>
+                  <mat-select style="color: black" [(ngModel)]="selectedOrg" [disabled]="checkboxDisabledOrg" (selectionChange)="selectedOrganization($event.value)">
+                    <mat-option style="color: black" *ngFor="let BU of buArray" [value]="BU.id">{{BU.name}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+
+          <!-- <label> -->
+          <!-- <div class="row" style="margin-top: 10%; margin-left:4%">
+                    <mat-slide-toggle style="color: black" [(ngModel)]="toggleOrgChange" (change)="orgCheckbox($event)">{{orgCheckboxValue}} Organisation</mat-slide-toggle>
+                  </div> -->
+          <!-- </label> -->
+
+        </ion-row>
+        <div class="container-fluid" [ngStyle]="{'background':backAccColor}">
+          <p style="font-weight: bold; ">Market Unit & BU</p>
+        </div>
+        <ion-row>
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-sm-6 col-xs-12" style="background-color:#D7DBDD;">
+                <mat-form-field appearance="outline" style="width: 100%; margin-top:5px">
+                  <mat-label style="color: black">Select Market Unit</mat-label>
+                  <mat-select style="color: black" [(ngModel)]="selectedMarketUnitValue" [disabled]="marketUnitDisabled" (selectionChange)="selectedMarketUnit($event.value.id)">
+                    <mat-option style="color: black" *ngFor="let tech of marketUnitArray" [value]="tech">{{tech.name}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div class="col-sm-6 col-xs-12" style="background-color:#D7DBDD;">
+                <mat-form-field appearance="outline" style="width: 100%;; margin-top:5px; margin-bottom: 2%">
+                  <mat-label style="color: black">Select Account</mat-label>
+                  <mat-select style="color: black" multiple required [(ngModel)]="accountId" [disabled]="selectAccoutnDisabled" (selectionChange)="selectedAccount($event.value)">
+                    <mat-option *ngFor="let tech of accountsArray" [value]="tech.id">{{tech.name}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+        </ion-row>
+      </ion-grid>
+    </p-card>
+  </ion-content>
+
+
+
+</ion-content>
+
+
+
+
+
+<ion-header *ngIf="devWidth >= 768">
+  <ion-toolbar>
+    <div>
+      <app-header id="desktop"></app-header>
+    </div>
+  </ion-toolbar>
+</ion-header>
+<ion-content *ngIf="!mobileView">
+  <div class="container">
+    <ion-card class="reportsFilter" *ngIf="devWidth >= 768">
+      <div class="row" style="align-items: baseline; padding-left: 20px;height: 55px;background: #D7DBDD">
+        <div class="col-xs-3 col-sm-3 col-lg-3">
+          <label class="calenderBorder">
+            <input style="display: inline-block; margin-left:2%; background: #D7DBDD" readonly placeholder="Pick the Date" class="dateSet fromDateWidth"
+              [(ngModel)]="dateTimeRange" [(ngModel)]="dateTimeRange" [selectMode]="'range'" [owlDateTimeTrigger]="dtRange1"
+              [owlDateTime]="dtRange1" (dateTimeChange)="getDateRange($event)">
+            <owl-date-time [pickerType]="'calendar'" #dtRange1></owl-date-time>
+            <ion-icon class="icon" style="color: black; margin-left: 2px" ios="ios-calendar" md="md-calendar"></ion-icon>
+          </label>
+        </div>
+        <div class="col-xs-3 col-sm-3 col-lg-3">
+          <mat-form-field appearance="outline">
+            <mat-label style="color: black">Select Day</mat-label>
+            <mat-select [(ngModel)]="selectedDay" (selectionChange)="seletedDayValue($event.value)">
+              <mat-option *ngFor="let day of days" [value]="day.id">
+                {{day.viewValue}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="col-xs-3 col-sm-3 col-lg-3">
+          <mat-slide-toggle style="color: black" (change)="techCheckbox($event)">{{techCheckboxValue}} Technology</mat-slide-toggle>
+          <!-- <mat-checkbox style="color: black" (change)="techCheckbox($event)"> Click here to {{techCheckboxValue}} Technology</mat-checkbox> -->
+        </div>
+        <div class="col-xs-3 col-sm-3 col-lg-3">
+          <mat-form-field appearance="outline">
+            <mat-label style="color: black;">Select Technology</mat-label>
+            <mat-select style="color: black" [(ngModel)]="selectedTechnology" multiple [disabled]="checkboxDisabled" (selectionChange)="seletedTechValue($event.value)">
+              <mat-option>
+                <ngx-mat-select-search [placeholderLabel]="'Search...'" [noEntriesFoundLabel]="'No matching Technology found'" ngModel (ngModelChange)="filterMyOptions($event)"></ngx-mat-select-search>
+              </mat-option>
+              <mat-option style="color: black" *ngFor="let tech of technologyArray" [value]="tech.id">{{tech.name}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="row" style="align-items: baseline;padding-left: 20px;height: 55px;background: #D7DBDD">
+        <div class="col-xs-3 col-sm-3 col-lg-3">
+          <mat-slide-toggle style="color: black" (change)="orgCheckbox($event)">{{orgCheckboxValue}} Organisation</mat-slide-toggle>
+
+          <!-- <mat-checkbox style="color: black;padding: inherit;" (change)="orgCheckbox($event)"> Click to {{orgCheckboxValue}} Filter by Organisation</mat-checkbox> -->
+        </div>
+        <div class="col-xs-3 col-sm-3 col-lg-3">
+          <mat-form-field appearance="outline">
+            <mat-label style="color: black;">Select Organisation</mat-label>
+            <mat-select style="color: black" [(ngModel)]="selectedOrg" [disabled]="checkboxDisabledOrg" (selectionChange)="selectedOrganization($event.value)">
+              <mat-option style="color: black" *ngFor="let BU of buArray" [value]="BU.id">{{BU.name}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="col-xs-3 col-sm-3 col-lg-3">
+          <mat-form-field appearance="outline">
+            <mat-label style="color: black">Select Market Unit</mat-label>
+            <mat-select style="color: black" [(ngModel)]="selectedMarketUnitValue" [disabled]="marketUnitDisabled" (selectionChange)="selectedMarketUnit($event.value.id)">
+              <mat-option style="color: black" *ngFor="let tech of marketUnitArray" [value]="tech">{{tech.name}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="col-xs-3 col-sm-3 col-lg-3">
+          <mat-form-field appearance="outline">
+            <mat-label style="color: black">Select Account</mat-label>
+            <mat-select style="color: black" multiple required [(ngModel)]="accountId" [disabled]="selectAccoutnDisabled" (selectionChange)="selectedAccount($event.value)">
+              <mat-option *ngFor="let tech of accountsArray" [value]="tech.id">{{tech.name}}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+      <!-- </div> -->
+    </ion-card>
+    <!-- <ng-container *ngIf="!mobileView"> -->
+    <div class="col-lg-12" class="buttonParentClass">
+      <button mat-button (click)="reportsEvent()" class="buttonClass">
+        <b>Click Here For {{valueOfButton}} Reports</b>
+      </button>
+    </div>
+
+    <ion-card *ngIf="nochartdata === 0">
+      <div style="float: center">
+        <h3 style="color: black">
+          No Data Available
+        </h3>
+      </div>
+    </ion-card>
+
+    <div class="chartReports row" style="align-self: auto;" *ngIf="reportEnable && nochartdata !==0">
+
+      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pieCss">
+        <ion-card>
+          <chart id="chart" class="pieCss" style="width:100%;margin: 0 auto" [options]="chartOptions" type="chart"></chart>
+        </ion-card>
+      </div>
+      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 pieCss">
+        <ion-card>
+
+          <chart id="chart" class="pieCss" style="width:100%;margin: 0 auto" [options]="options" type="chart"></chart>
+        </ion-card>
+      </div>
+    </div>
+
+
+    <div class="example-container mat-elevation-z8 container" *ngIf="!reportEnable && nochartdata !==0">
+      <div class="row">
+        <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6">
+          <h5 class="tableTitleRow" style="color: #37ABDD">{{reportTableName | titlecase}} Slots</h5>
+        </div>
+        <div class="col-sm-6 col-md-6 col-lg-6 col-xl-6 textAlignRight">
+          <button mat-button (click)="downloadCompleteReports()" style="margin-top: 1%;background-color: #37ABDD;">Download Reports</button>
+        </div>
+      </div>
+
+      <app-table [loadingIndicator]="loadingIndicator" [rowData]="rowData" [columnData]="columnData" [limit]="limit"></app-table>
+
+    </div>
+    <!-- </ng-container> -->
+    <ion-footer style="position: fixed;left: 0;bottom: 0;width: 100%;">
+      <div id="container" style="display: block;"></div>
+      <ion-fab class="fliterIcon" *ngIf="!isFilterApplied" vertical="bottom" horizontal="end" slot="fixed" (click)="gotoFilterPage()">
+        <ion-fab-button>
+          <ion-icon name="funnel"></ion-icon>
+        </ion-fab-button>
+      </ion-fab>
+
+
+      <ion-fab class="fliterIcon" style="position: absolute; position: fixed;
+    " *ngIf="isFilterApplied" slot="fixed" vertical="bottom" horizontal="end">
+        <ion-fab-list side="start" class="fliterIcon">
+          <ion-fab-button (click)="gotoFilterPage()" style=" position: fixed;" color="primary" slot="fixed" vertical="bottom" horizontal="end">
+            <ion-icon size="default" name="funnel"></ion-icon>
+          </ion-fab-button>
+          <ion-fab-button color="danger" (click)="clearFilters()">
+            <ion-icon size="large" name="close-circle-outline"></ion-icon>
+          </ion-fab-button>
+        </ion-fab-list>
+      </ion-fab>
+    </ion-footer>
+
+  </div>
+</ion-content>
+
+<ion-footer *ngIf="devWidth <= 768 && mobileView== true">
+  <ion-toolbar>
+    <ion-grid>
+      <ion-row>
+        <ion-col size-xs="8">
+        </ion-col>
+        <ion-col size-xs="4">
+          <ion-button (click)="gotoReportPage()" expand="block" color="primary">Apply</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+  </ion-toolbar>
+</ion-footer>

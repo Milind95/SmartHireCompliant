@@ -1,0 +1,106 @@
+<ion-content>
+  <ion-grid>
+
+    <ion-row>
+      <ion-col size-xs="12" *ngIf="noDataAvailableMsg && currentSlotInfo?.length === 0" class="centreAlign">
+        <b>
+          {{noDataAvailableMsg}}
+        </b>
+      </ion-col>
+      <ion-col size-xs="2" *ngIf="currentSlotInfo?.length !== 0">
+        <div *ngIf="currentDay && currentDate">
+          {{ currentDay}}
+          <br>
+          <span>
+            <b>
+              {{currentDate}}
+            </b>
+          </span>
+        </div>
+
+      </ion-col>
+      <ion-col size-xs="10" *ngIf="currentSlotInfo?.length !== 0">
+        <mat-accordion class="example-headers-align">
+          <mat-expansion-panel [ngClass]="{bgGreen: slot.color.name === 'green'}" *ngFor="let slot of currentSlotInfo;let i = index" class="marginClassForExPanel"
+            [expanded]="step === i" (opened)="setStep(i)" hideToggle>
+            <mat-expansion-panel-header>
+              <mat-panel-title [ngClass]="{bgGreen: slot.color.name === 'green'}">
+                {{getTimeFromDatein12HoursFormat(slot.start)}} - {{getTimeFromDatein12HoursFormat(slot.end)}}
+              </mat-panel-title>
+              <mat-panel-description *ngIf="slot.isBooked" [ngClass]="{bgGreen: slot.color.name === 'green'}">
+                {{slot.candidateName}} - {{slot.interviewTypeName}} - {{slot.technologyName}}
+                <mat-icon *ngIf="currentDateTimeStamp > slot.timestamp && slot.feedbackStatus === 'Pass'" (click)="goToFeedback(slot)" class="material-icons matIconMargin">thumb_up</mat-icon>
+                <mat-icon *ngIf="currentDateTimeStamp > slot.timestamp && slot.feedbackStatus === 'Fail'" (click)="goToFeedback(slot)" class="material-icons matIconMargin">thumb_down</mat-icon>
+                <mat-icon *ngIf="currentDateTimeStamp > slot.timestamp && slot.feedbackStatus === 'On Hold'" (click)="goToFeedback(slot)" class="material-icons matIconMargin">pan_tool</mat-icon>
+                
+
+              </mat-panel-description>
+            </mat-expansion-panel-header>
+            <ion-grid *ngIf="slot.isBooked">
+              <ion-row class="dataRow">
+                <ion-col size-xs="12">
+                  <ion-row>
+                    <ion-col size-xs="6">
+                      <b>
+                        Candidate Name
+                      </b>
+                    </ion-col>
+                    <ion-col size-xs="6">
+                      {{slot.candidateName}}
+                    </ion-col>
+                  </ion-row>
+                </ion-col>
+              </ion-row>
+
+              <ion-row class="dataRow">
+                <ion-col size-xs="12">
+                  <ion-row>
+                    <ion-col size-xs="6">
+                      <b>
+                        Technology
+                      </b>
+                    </ion-col>
+                    <ion-col size-xs="6">
+                      {{slot.technologyName}}
+                    </ion-col>
+                  </ion-row>
+                </ion-col>
+              </ion-row>
+
+              <ion-row class="dataRow">
+                <ion-col size-xs="12">
+                  <ion-row>
+                    <ion-col size-xs="6">
+                      <b>
+                        Interview Type
+                      </b>
+                    </ion-col>
+                    <ion-col size-xs="6">
+                      {{slot.interviewTypeName}}
+                    </ion-col>
+                  </ion-row>
+                </ion-col>
+              </ion-row>
+
+              <ion-row class="dataRow">
+                <ion-col size-xs="12">
+                  <ion-row>
+                    <ion-col size-xs="6">
+                      <b>
+                        Recruiter Name
+                      </b>
+                    </ion-col>
+                    <ion-col size-xs="6">
+                      {{slot.recruiterName}}
+                    </ion-col>
+                  </ion-row>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+
+          </mat-expansion-panel>
+        </mat-accordion>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

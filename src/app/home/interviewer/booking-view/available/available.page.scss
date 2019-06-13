@@ -1,0 +1,107 @@
+.example-headers-align .mat-expansion-panel-header-title,
+.example-headers-align .mat-expansion-panel-header-description {
+  flex-basis: 1;
+  text-align: center;
+  font-size: 12px;
+  color: black
+}
+
+
+.example-headers-align .mat-expansion-panel-header-description{
+    justify-content: flex-end;
+    align-items: center;
+}
+
+
+.mat-expansion-panel-header {
+    padding: 0 8px;
+}
+
+.matIconMargin{
+    margin-left: 5px;
+}
+
+
+.zeroPadding{
+    padding: 0%;
+}
+
+.marginClassForExPanel{
+    margin-top: 2% !important;
+}
+.bgGreen{
+    background: rgba(102, 204, 153, 0.988235) !important;
+    color: black !important;
+}
+.bgPink{
+    background:rgba(255, 102, 102, 0.588235) !important;
+    color: white !important;
+}
+.bgYellow{
+    background:#ffc107 !important;
+    color: black !important;
+}
+.bgGrey{
+    background:grey !important;
+    color: white !important;
+}
+
+.delete{
+    background:red !important;
+    color: white !important;
+}
+
+.mat-expansion-panel-header-title{
+    font-size: 12px;
+    font-weight: bolder;
+    align-items: center;
+    text-align: center;
+}
+
+.example-custom-date-class {
+    background: #ffd485;
+    color: white !important;
+    border-radius: 100%;
+  }
+
+  .centreAlign{
+    text-align: center
+  }
+
+  .dateInputClass{
+    outline: none;
+    border: none;
+    max-width: 125px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 14px;
+  }
+
+  .mat-expansion-panel-header {
+    padding: 0 8px;
+}
+
+.dataRow{
+    border-bottom: 1px solid;
+}
+
+.multipleDelete{
+    padding: 5% 0%;
+}
+
+.multipleDeleteLabel{
+    font-size: 12px !important;
+    color: #3880ff;
+}
+.deleteAllIcon{
+    color: red
+}
+
+.checkbox{
+    padding: 0% 0%;
+    margin: 3% 10%;
+}
+
+.selfAlignCentre{
+    align-self: center;
+}

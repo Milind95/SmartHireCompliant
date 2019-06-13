@@ -1,0 +1,83 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="Filters" icon="arrow-round-back"></ion-back-button>
+    </ion-buttons>
+
+    <ion-button id="clear" fill="outline" class="rightFloat" (click)="clearFilters()">
+      <ion-icon name="trash"></ion-icon>clear
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col size-xs="5" size-sm="5">
+
+        <ion-list class="ionListClass">
+          <ion-item color="{{category.isClicked ? 'medium': ''}}" *ngFor="let category of categories" (click)="selectedCategory(category)">
+            <ion-label class="labelClass">{{category.name}}
+              <ion-icon class="iconClass" slot="end" *ngIf="!category.isSelected && (category.value !== 4 && category.value !== 5)" color="warning" name="alert"></ion-icon>
+              <ion-icon class="iconClass" slot="end" *ngIf="category.isSelected && (category.value !== 4 && category.value !== 5)" color="success" name="checkmark-circle"></ion-icon>
+            </ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+      <ion-col size-xs="7" size-sm="7">
+        <ng-container *ngFor="let data of categoryData">
+
+          <ion-list class="ionListDataClass">
+            <ion-radio-group *ngIf="data.type === 'radio'" [(ngModel)]="data.radioModel">
+              <ion-list-header background="light">
+                <ion-label>
+                  <span class="categoryTitleLabel">{{data.title}}</span>
+                </ion-label>
+              </ion-list-header>
+              <ion-searchbar *ngIf="data.title === 'Technology'" [(ngModel)]="searchText" (ionChange)="searchValues($event)" animated placeholder="Search"></ion-searchbar>
+              <ion-item *ngFor="let data1 of data.data">
+                <ion-label>{{data1.value}}</ion-label>
+                <ion-radio value="{{data1.key}}" (ionSelect)="radioChanged($event,data1)" slot="end"></ion-radio>
+              </ion-item>
+
+            </ion-radio-group>
+            <ng-container *ngIf="data.type === 'checkbox'">
+              <ion-list-header>
+                <ion-label class="categoryTitleLabel">{{data.title}}</ion-label>
+              </ion-list-header>
+              <ion-item *ngFor="let data1 of data.data">
+                <ion-label>{{data1.value}}</ion-label>
+                <ion-checkbox  class="checkboxChange" slot="end" [(ngModel)]="data1.isChecked" (ionChange)="checkboxChanged($event,data1)"></ion-checkbox>
+              </ion-item>
+            </ng-container>
+          </ion-list>
+        </ng-container>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-grid>
+      <ion-row>
+        <ion-col size-xs="8">
+          <h6 *ngIf="filterCount >= 0">
+            <ion-label>
+              <b id="filter">
+                Filtered Result
+                <span [ngStyle]="{color:filterCount > 0 ? 'green':'red'}">{{filterCount}}
+                </span>
+              </b>
+            </ion-label>
+          </h6>
+        </ion-col>
+        <ion-col size-xs="4">
+          <ion-button id="apply" (click)="applyAndgotoCalendar()" expand="block" color="warning">Apply</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+  </ion-toolbar>
+</ion-footer>

@@ -1,0 +1,39 @@
+.ion-color-warning {
+    --ion-color-base: #f7660f !important;
+}
+
+.rightFloat{
+    float: right;
+}
+
+.labelClass{
+    font-size: smaller;
+    font-weight: bold;
+    text-overflow: ellipsis;
+    white-space: normal;
+    margin: 0px;
+    cursor: pointer;
+}
+
+.categoryTitleLabel{
+    font-weight: bold;
+    text-transform: uppercase;
+    font-family: monospace;
+    color: #f7660f;
+}
+
+.ionListClass{
+    border: 2px solid #f7660f;
+}
+.selectedCategory{
+    color: red
+}
+.ionListDataClass{
+    border: 2px solid #f7660f;
+    min-height: -webkit-fill-available;
+    max-height: -webkit-fill-available;
+    overflow-y: auto
+}
+.iconClass{
+    float: right;
+}

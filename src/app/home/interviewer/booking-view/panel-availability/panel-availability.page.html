@@ -1,0 +1,102 @@
+<ion-content>
+  <ion-grid>
+
+    <ion-row>
+      <ion-col size-xs="12" *ngIf="noDataAvailableMsg && currentSlotInfo?.length === 0" class="centreAlign">
+        <b>
+          {{noDataAvailableMsg}}
+        </b>
+      </ion-col>
+      <ion-col size-xs="2" *ngIf="currentSlotInfo?.length !== 0">
+        <div *ngIf="currentDay && currentDate">
+          {{ currentDay}}
+          <br>
+          <span>
+            <b>
+              {{currentDate}}
+            </b>
+          </span>
+        </div>
+
+      </ion-col>
+      <ion-col size-xs="10" *ngIf="currentSlotInfo?.length !== 0">
+        <mat-accordion class="example-headers-align">
+          <mat-expansion-panel [ngClass]="{bgYellow:slot.color.name === 'yellow'}" *ngFor="let slot of currentSlotInfo;let i = index"
+            class="marginClassForExPanel" [expanded]="step === i" (opened)="setStep(i)" hideToggle>
+            <mat-expansion-panel-header>
+              <mat-panel-title [ngClass]="{bgYellow:slot.color.name === 'yellow'}">
+                {{getTimeFromDatein12HoursFormat(slot.start)}} - {{getTimeFromDatein12HoursFormat(slot.end)}}
+              </mat-panel-title>
+              <mat-panel-description *ngIf="!slot.isBooked" [ngClass]="{bgYellow:slot.color.name === 'yellow'}">
+                {{slot.interviewerName}} - {{slot.interviewTypeId === 1 ? 'L1' : slot.interviewTypeId === 2 ? 'L2' : null}}
+
+                <mat-icon (click)="bookInterviewersSlot(slot)" class="material-icons matIconMargin">exit_to_app</mat-icon>
+
+              </mat-panel-description>
+
+            </mat-expansion-panel-header>
+            <ion-grid *ngIf="!slot.isBooked">
+              <ion-row class="dataRow">
+                <ion-col size-xs="12">
+                  <ion-row>
+                    <ion-col size-xs="5">
+                      <b>
+                        Email
+                      </b>
+                    </ion-col>
+                    <ion-col size-xs="7">
+                      {{slot.interviewerEmail}}
+                    </ion-col>
+                  </ion-row>
+                </ion-col>
+              </ion-row>
+              <ion-row class="dataRow">
+                <ion-col size-xs="12">
+                  <ion-row>
+                    <ion-col size-xs="5">
+                      <b>
+                        Grade
+                      </b>
+                    </ion-col>
+                    <ion-col size-xs="7">
+                      {{slot.interviewerGrade}}
+                    </ion-col>
+                  </ion-row>
+                </ion-col>
+              </ion-row>
+              <ion-row class="dataRow">
+                <ion-col size-xs="12">
+                  <ion-row>
+                    <ion-col size-xs="5">
+                      <b>
+                        Participation Type
+                      </b>
+                    </ion-col>
+                    <ion-col size-xs="7">
+                      {{slot.participationType === 1 ? 'Face to Face' : slot.participationType === 2 ? 'Telephonic' : null}}
+                    </ion-col>
+                  </ion-row>
+                </ion-col>
+              </ion-row>
+              <ion-row class="dataRow">
+                <ion-col size-xs="12">
+                  <ion-row>
+                    <ion-col size-xs="5">
+                      <b>
+                        Organisation
+                      </b>
+                    </ion-col>
+                    <ion-col size-xs="7">
+                      {{slot.organization}}
+                    </ion-col>
+                  </ion-row>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+
+          </mat-expansion-panel>
+        </mat-accordion>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

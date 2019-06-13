@@ -1,0 +1,38 @@
+<!-- <div class='selected-column'>
+      <h4>Available Columns</h4>
+      <ul>
+        <li *ngFor='let col of allColumns'>
+          <input type='checkbox' [id]="col.name" (click)='toggle(col)' [checked]='isChecked(col)' />
+          <label [attr.for]="col.name">{{col.name}}</label>
+        </li>
+      </ul>
+    </div> -->
+
+<div style="text-align: right;padding: 3px;">
+  <ion-button title="Reset Filters" (click)="resetFilters()">
+    <ion-icon name="close-circle-outline" slot="icon-only"></ion-icon>
+  </ion-button>
+  <ion-button title="Filter columns" (click)="presentPopover($event)">
+    <ion-icon name="reorder" slot="icon-only"></ion-icon>
+  </ion-button>
+</div>
+
+
+
+
+
+<ngx-datatable #table class="material" [loadingIndicator]="loadingIndicator" [reorderable]="reorderable" [swapColumns]="swapColumns"
+  [sortType]="'multi'" [headerHeight]="'auto'" [footerHeight]="'auto'" [columnMode]="'force'" [rowHeight]="'auto'" [rows]="rowData"
+  [columns]="columnData" [scrollbarV]="false" [scrollbarH]="true" [limit]="limit" [selected]="selected" [selectionType]="'single'"
+  (activate)="onActivate($event)" (select)='onSelect($event)'>
+  <ngx-datatable-column name="{{col.name}}" *ngFor="let col of columnData">
+    <ng-template let-sort="sortFn" let-column="column" ngx-datatable-header-template>
+      <strong (click)="sort()">
+        {{col.label}}
+      </strong>
+      <br>
+      <input type='text' [(ngModel)]="col.filter" class='inputClass' placeholder='Search' (keyup)='updateFilter()'
+      />
+    </ng-template>
+  </ngx-datatable-column>
+</ngx-datatable>

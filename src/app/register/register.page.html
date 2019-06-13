@@ -1,0 +1,236 @@
+<ion-content>
+  <ion-grid class="background">
+    <ion-row justify-content-center>
+      <ion-col class="zeroOpacity" align-self-center size-md="6" size-lg="7" size-xs="0">
+      </ion-col>
+      <ion-col class="boxShadow" align-self-center size-md="5" size-lg="4" size-xs="12">
+        <div>
+          <ion-progress-bar class="progressBar" *ngIf="showProgressBar" type="indeterminate" color="success"></ion-progress-bar>
+        </div>
+        <form [formGroup]="registerForm" (ngSubmit)="validateRegistartion(registerForm.value)">
+
+          <div text-center>
+            <h4>
+              <span class="smart">
+                Smart
+              </span>
+              <span class="hire">
+                Hire
+              </span>
+            </h4>
+          </div>
+
+
+          <ion-row justify-content-center>
+            <ion-col class="noBorder" align-self-center size-md="12" size-lg="12" size-xs="12">
+              <ion-item>
+                <ion-label id="fullName" position="floating">Full Name</ion-label>
+                <ion-icon class="icon" slot="start" name="person"></ion-icon>
+                <ion-input type="text" formControlName="name" [(ngModel)]="fullName">
+                </ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+
+          <ion-row justify-content-center>
+            <ion-col class="noBorder" align-self-center size-md="12" size-lg="12" size-xs="12">
+              <ion-item>
+                <ion-label id="email" position="floating">Email Id</ion-label>
+                <ion-icon class="icon" slot="start" name="mail"></ion-icon>
+                <ion-input type="text" formControlName="email" [(ngModel)]="emailId">
+                </ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+
+          <ion-row justify-content-center>
+            <ion-col class="noBorder" align-self-center size-md="6" size-lg="6" size-xs="12">
+              <ion-item>
+                <ion-label id="employee" position="floating">Employee Id</ion-label>
+                <ion-icon class="icon" slot="start" name="alert"></ion-icon>
+                <ion-input type="text" formControlName="id" [(ngModel)]="empId"></ion-input>
+              </ion-item>
+            </ion-col>
+
+            <ion-col class="noBorder" align-self-center size-md="6" size-lg="6" size-xs="12">
+              <ion-item id="mobile">
+                <ion-label id="grade">Grade</ion-label>
+                <ion-icon class="icon" slot="start" name="person-add"></ion-icon>
+                <ion-select formControlName="grade" [(ngModel)]="gradeModel">
+                  <ion-select-option *ngFor="let role of gradesArray" [value]="role">{{role.name}}</ion-select-option>
+                </ion-select>
+              </ion-item>
+
+              <ion-item id="desktop" class="marginClassForDesktopElements">
+                <mat-select class="grade" placeholder="Grade" formControlName="grade" [(ngModel)]="gradeModel">
+                  <mat-option *ngFor="let role of gradesArray" [value]="role">
+                    {{role.name}}
+                  </mat-option>
+                </mat-select>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+
+          <ion-row justify-content-center>
+            <ion-col class="noBorder" align-self-center size-md="6" size-lg="6" size-xs="12">
+              <ion-item id="mobile">
+                <ion-label id="role">Role</ion-label>
+                <ion-icon class="icon" slot="start" name="person-add"></ion-icon>
+                <ion-select formControlName="role" (ionChange)="selectedRole($event.detail.value)" [(ngModel)]="roleModel">
+                  <ion-select-option *ngFor="let role of roles" [value]="role">{{role.name}}</ion-select-option>
+                </ion-select>
+              </ion-item>
+
+              <ion-item id="desktop" class="marginClassForDesktopElements">
+                <mat-select class="role" placeholder="Role" formControlName="role" [(ngModel)]="roleModel" (selectionChange)="selectedRole($event.value)">
+                  <mat-option *ngFor="let role of roles" [value]="role">
+                    {{role.name}}
+                  </mat-option>
+                </mat-select>
+              </ion-item>
+            </ion-col>
+            <ion-col class="noBorder" align-self-center size-md="6" size-lg="6" size-xs="12">
+              <ion-item>
+                <ion-label id="location" position="floating">Location</ion-label>
+                <ion-icon class="icon" slot="start" name="pin"></ion-icon>
+                <ion-input type="text" formControlName="location" [(ngModel)]="loc"></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+
+          <ion-row justify-content-center *ngIf="recruiterElements">
+
+            <ion-col class="noBorder" align-self-center size-md="6" size-lg="6" size-xs="12">
+              <ion-item id="mobile">
+                <ion-label>Technology</ion-label>
+                <ion-icon class="icon" slot="start" name="person-add"></ion-icon>
+                <ion-select formControlName="technology" multiple="true" [(ngModel)]="techModel">
+                  <ion-select-option *ngFor="let role of technologyArray" [value]="role">{{role.name}}</ion-select-option>
+                </ion-select>
+              </ion-item>
+
+              <ion-item id="desktop" class="marginClassForDesktopElements">
+                <mat-select class="technology" placeholder="Technology" formControlName="technology" multiple [(ngModel)]="techModel">
+                  <mat-option *ngFor="let role of technologyArray" [value]="role">
+                    {{role.name}}
+                  </mat-option>
+                </mat-select>
+              </ion-item>
+            </ion-col>
+
+            <ion-col class="noBorder" align-self-center size-md="6" size-lg="6" size-xs="12">
+              <ion-item id="mobile">
+                <ion-label>BU</ion-label>
+                <ion-icon class="icon" slot="start" name="person-add"></ion-icon>
+                <ion-select formControlName="organization" (ionChange)="selectedBU($event.detail.value)" [(ngModel)]="buModel">
+                  <ion-select-option *ngFor="let bu of buArray" [value]="bu">{{bu.name}}</ion-select-option>
+                </ion-select>
+              </ion-item>
+
+              <ion-item id="desktop" class="marginClassForDesktopElements">
+                <mat-select class="bu" placeholder="BU" formControlName="organization" [(ngModel)]="buModel" (selectionChange)="selectedBU($event.value)">
+                  <mat-option *ngFor="let bu of buArray" [value]="bu">
+                    {{bu.name}}
+                  </mat-option>
+                </mat-select>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+
+          <ion-row justify-content-center *ngIf="recruiterElements">
+
+            <ion-col class="noBorder" align-self-center size-md="6" size-lg="6" size-xs="12">
+              <ion-item id="mobile">
+                <ion-label>Market Unit</ion-label>
+                <ion-icon class="icon" slot="start" name="person-add"></ion-icon>
+                <ion-select formControlName="marketUnit" [(ngModel)]="muModel" (ionChange)="selectedMU($event.detail.value)">
+                  <ion-select-option *ngFor="let role of marketunitArray" [value]="role">{{role.name}}</ion-select-option>
+                </ion-select>
+              </ion-item>
+
+              <ion-item id="desktop" class="marginClassForDesktopElements">
+                <mat-select class="marketUnit" placeholder="Market Unit" formControlName="marketUnit" [(ngModel)]="muModel" (selectionChange)="selectedMU($event.value)">
+                  <mat-option *ngFor="let role of marketunitArray" [value]="role">
+                    {{role.name}}
+                  </mat-option>
+                </mat-select>
+              </ion-item>
+            </ion-col>
+
+            <ion-col class="noBorder" align-self-center size-md="6" size-lg="6" size-xs="12">
+              <ion-item id="mobile">
+                <ion-label>Account</ion-label>
+                <ion-icon class="icon" slot="start" name="person-add"></ion-icon>
+                <ion-select formControlName="account" [(ngModel)]="accountModel">
+                  <ion-select-option *ngFor="let role of accountsArray" [value]="role">{{role.name}}</ion-select-option>
+                </ion-select>
+              </ion-item>
+
+              <ion-item id="desktop" class="marginClassForDesktopElements">
+                <mat-select class="account" placeholder="Account" formControlName="account" [(ngModel)]="accountModel">
+                  <mat-option *ngFor="let role of accountsArray" [value]="role">
+                    {{role.name}}
+                  </mat-option>
+                </mat-select>
+              </ion-item>
+            </ion-col>
+
+          </ion-row>
+
+
+          <ion-row justify-content-center>
+            <ion-col class="noBorder" align-self-center size-md="12" size-lg="12" size-xs="12">
+              <ion-item id="mobile">
+                <ion-label position="floating">Password</ion-label>
+                <ion-icon class="icon" slot="start" name="lock"></ion-icon>
+                <ion-input [type]="mhide ? 'password' : 'text'" formControlName="password" [(ngModel)]="pass">
+                </ion-input>
+                <ion-icon class="icon" slot="end" (click)="mhide = !mhide" [name]="mhide ? 'eye-off' : 'eye'"></ion-icon>
+                <!-- <ion-icon class="icon" slot="end" name="eye-off"></ion-icon> -->
+
+              </ion-item>
+
+              <mat-form-field class="full-width" id="desktop" padding>
+                <input matInput placeholder="Password" [type]="hide ? 'password' : 'text'" formControlName="password">
+                <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+              </mat-form-field>
+            </ion-col>
+          </ion-row>
+
+
+          <div padding>
+            <ion-row>
+              <ion-col class="noBorder" align-self-center size-md="6" size-lg="6" size-xs="6">
+                <button  id="resetIcon" class="btn btn-primary full-width reset" type="reset">
+                  <ion-icon  class="icon fontSizeIcon" name="refresh-circle"></ion-icon>Reset</button>
+
+              </ion-col>
+              <ion-col class="noBorder" align-self-center size-md="6" size-lg="6" size-xs="6">
+                <button id="register" class="btn btn-primary full-width register" type="submit" [disabled]="!registerForm.valid">
+                  <ion-icon  class="icon fontSizeIcon" name="add-circle-outline"></ion-icon>Register</button>
+              </ion-col>
+            </ion-row>
+          </div>
+
+          <ion-row justify-content-center>
+            <ion-col class="noBorder" align-self-center size-md="5" size-lg="5" size-xs="5">
+              <hr>
+            </ion-col>
+            <ion-col id="or" class="noBorder centreAlign" align-self-center size-md="2" size-lg="2" size-xs="2">
+              OR
+            </ion-col>
+            <ion-col class="noBorder" align-self-center size-md="5" size-lg="5" size-xs="5">
+              <hr>
+            </ion-col>
+          </ion-row>
+
+
+          <div padding>
+            <ion-button id="login" routerLink="/login" routerDirection="root" class="registerBtn" fill="outline" size="default" expand="block">Already a member ? Login now</ion-button>
+          </div>
+        </form>
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

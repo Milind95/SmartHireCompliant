@@ -1,0 +1,16 @@
+<ion-item class="ionItem">
+  <ion-label>{{label}}</ion-label>
+  <ion-icon *ngIf="icon" class="ionIcons" slot="start" mode="ios" [name]="icon"></ion-icon>
+
+  <ionic-selectable class="selectClass" [(ngModel)]="selectedItem" [items]="items" itemValueField="id" itemTextField="name" [canSearch]="searchFilter"
+    [isMultiple]="isMultiple" [canClear]="true" (onChange)="change($event)" [disabled]="false" [hasVirtualScroll]="true"
+    placeholder="Select {{label}}">
+
+    <!-- <ng-template ionicSelectableValueTemplate let-ports="value">
+      <div *ngFor="let port of ports">
+        {{port}}
+      </div>
+    </ng-template> -->
+
+  </ionic-selectable>
+</ion-item>

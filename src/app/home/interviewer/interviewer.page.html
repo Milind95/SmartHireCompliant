@@ -1,0 +1,172 @@
+<ngx-spinner *ngIf="devWidth > 768" bdColor="rgba(51,51,51,0.8)"  size="medium"  color="#fff"  type="timer">
+  <p style="font-size: 20px; color: white">Please Wait...</p>
+    </ngx-spinner>
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start" id="mobile">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <!-- <ion-title>interviewer</ion-title> -->
+    <div id="mobile">
+      <ion-grid>
+        <ion-row>
+          <ion-col size-xs="10" size-sm="10" size-md="10">
+            <ion-row>
+              <ion-col size-xs="3" size-sm="3" size-md="3">
+                <ion-button fill="clear" class="fontSizeBtn" (click)="triggerPrevForMobile($event)"
+                  mwlCalendarPreviousView [view]="view" [(viewDate)]="viewDate" (viewDateChange)="activeDayIsOpen = false">
+                  <ion-icon slot="icon-only" size="large" name="arrow-dropleft-circle"></ion-icon>
+                </ion-button>
+              </ion-col>
+              <ion-col size-xs="6" size-sm="6" size-md="6" class="calendarLabelMobile">
+                <ion-label id="calendarDate">
+                  {{ viewDate | calendarDate:(view + 'ViewTitle'):'en' }}
+                </ion-label>
+              </ion-col>
+              <ion-col size-xs="3" size-sm="3" size-md="3">
+                <ion-button fill="clear" class="fontSizeBtn" (click)="triggerNextForMobile($event)" mwlCalendarNextView
+                  [view]="view" [(viewDate)]="viewDate" (viewDateChange)="activeDayIsOpen = false">
+                  <ion-icon slot="icon-only" size="large" name="arrow-dropright-circle"></ion-icon>
+                </ion-button>
+              </ion-col>
+            </ion-row>
+          </ion-col>
+          <ion-col size-xs="2" size-sm="2" size-md="2" class="fontSizeLabel">
+            <ion-button fill="clear" class="fontSizeBtn" (click)="triggerTodayForMobile($event)" mwlCalendarToday
+              [(viewDate)]="viewDate">
+              <ion-icon slot="icon-only" size="large" name="calendar"></ion-icon>
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+
+    <div id="desktop">
+      <app-header></app-header>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div class="container paddingAdjustment" id="mobile">
+    <router-outlet></router-outlet>
+  </div>
+
+
+  <div class="container" id="desktop">
+    <div class="row" style="margin-top: 1%;">
+      <div class="col-md-4 col-lg-4 col-xl-4">
+        <div class="row">
+          <div class="col-md-3 col-lg-2 col-xl-2">
+            <span mwlCalendarPreviousView [view]="view" [(viewDate)]="viewDate" (viewDateChange)="activeDayIsOpen = false"
+              class="cursonPointer">
+              <ion-icon name="arrow-round-back" size="large"></ion-icon>
+            </span>
+          </div>
+          <div class="col-md-4 col-lg-4 col-xl-4 calendarActions">
+            <span>{{ viewDate | calendarDate:(view + 'ViewTitle'):'en' }}</span>
+          </div>
+          <div class="col-md-3 col-lg-2 col-xl-2">
+            <span mwlCalendarNextView [view]="view" [(viewDate)]="viewDate" (viewDateChange)="activeDayIsOpen = false"
+              class="cursonPointer">
+              <ion-icon name="arrow-round-forward" size="large"></ion-icon>
+            </span>
+          </div>
+          <div class="col-md-2 col-lg-4 col-xl-4">
+            <span class="today" mwlCalendarToday [(viewDate)]="viewDate" class="cursonPointer">
+              <ion-icon color="primary" name="calendar" size="large"></ion-icon>
+              <!-- <ion-label>Today</ion-label> -->
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-8 col-lg-8 col-xl-8">
+        <div class="row">
+          <div class="col-md-6 col-lg-3 col-xl-3 textAlignLeft">
+            <span *ngIf="recuiterFlag" class="completeright style-scope interviewer-view"></span>
+            <a id="panelAvailability" *ngIf="recuiterFlag" class="completeRightLabel style-scope interviewer-view">Panel Availability</a>
+          </div>
+          <div class="col-md-6 col-lg-3 col-xl-3 textAlignLeft">
+            <span class="right style-scope interviewer-view"></span>
+            <a  id="availableCount" class="rightLabel style-scope interviewer-view">Available</a>
+          </div>
+          <div class="col-md-6 col-lg-3 col-xl-3 textAlignLeft">
+            <span class="left style-scope interviewer-view"></span>
+            <a id="bookedCount" class="leftLabel style-scope interviewer-view">Booked</a>
+          </div>
+          <div class="col-md-6 col-lg-3 col-xl-3 textAlignLeft">
+            <span class="complete style-scope interviewer-view"></span>
+            <a id="interviewedCount" class="completeLabel style-scope interviewer-view">Interviewed</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- <div class="container" *ngIf="recuiterFlag" id="desktop">
+    <div class="row">
+      <mat-checkbox (change)="interviewerCheckEvent($event)" [(ngModel)]="check">Check Interviewer Availability by Interview Type, Technology and Organization</mat-checkbox>
+    </div>
+  </div> -->
+
+
+  <!-- <ion-fab-button (click)="interviewerCheckEvent($event)">
+    <ion-icon name="funnel"></ion-icon>
+  </ion-fab-button> -->
+
+  <div class="container" [ngSwitch]="view" id="desktop">
+
+    <ion-grid>
+      <ion-row>
+        <ion-col size-md="12" size-lg="12" size-xl="12">
+          <mwl-calendar-month-view class="monthClass" *ngSwitchCase="CalendarView.Month" [viewDate]="viewDate" [events]="events"
+            [refresh]="refresh" (dayClicked)="dayClicked($event.day)" (eventClicked)="handleEvent('Clicked', $event.event)"
+            (eventTimesChanged)="eventTimesChanged($event)" [cellTemplate]="customCellTemplate">
+          </mwl-calendar-month-view>
+          <mwl-calendar-week-view class="weekClass" *ngSwitchCase="CalendarView.Week" [viewDate]="viewDate" [events]="events"
+            [refresh]="refresh" (eventClicked)="handleEvent('Clicked', $event.event)" (eventTimesChanged)="eventTimesChanged($event)">
+          </mwl-calendar-week-view>
+          <mwl-calendar-day-view class="dayClass" *ngSwitchCase="CalendarView.Day" [viewDate]="viewDate" [events]="events"
+            [refresh]="refresh" (eventClicked)="handleEvent('Clicked', $event.event)" (eventTimesChanged)="eventTimesChanged($event)">
+          </mwl-calendar-day-view>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+  <ng-template #customCellTemplate let-day="day" let-locale="locale">
+    <div [ngClass]=" {disableBg : todayDate> day.date}"  class="cal-cell-top">
+
+      <span *ngIf="day.events.length !== 0">
+        <span class="cal-day-badge" id="available" *ngIf="day.events[0].availableCount > 0">{{
+          day.events[0].availableCount}}</span>
+        <span class="cal-day-badge" id="booked" *ngIf="day.events[0].bookedCount > 0">{{ day.events[0].bookedCount }}</span>
+        <span class="cal-day-badge" id="interviewed" *ngIf="day.events[0].interviewedCount > 0">{{
+          day.events[0].interviewedCount }}</span>
+
+        <span class="cal-day-badge" id="panelAvailability" *ngIf="day.events[0].interviewerAvailabilityCount > 0">{{
+          day.events[0].interviewerAvailabilityCount }}</span>
+      </span>
+
+      <span class="cal-day-number">{{ day.date | calendarDate:'monthViewDayNumber':locale }}</span>
+    </div>
+
+    <div class="eventContainer" [ngClass]="{disableBg : todayDate > day.date}">
+      <h3 *ngFor="let event of day.events" class="eventClass" [ngClass]="slotBasedClass(event)">
+        {{getTimeFromDatein12HoursFormat(event.start)}} - {{getTimeFromDatein12HoursFormat(event.end)}}
+        <br>
+        <span *ngIf="event.isBooked">
+          {{event.candidateName}} - {{event.interviewTypeName}} - {{event.technologyName}}
+        </span>
+      </h3>
+    </div>
+
+  </ng-template>
+</ion-content>
+
+<!-- <ion-footer>
+  <ion-toolbar>
+    Smart Hires Footer
+  </ion-toolbar>
+</ion-footer> -->

@@ -1,0 +1,85 @@
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-title>Login</ion-title>
+  </ion-toolbar>
+</ion-header> -->
+
+<!-- <ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" type="ball-scale-multiple">
+    <p style="font-size: 20px; color: white">Loading...</p>
+</ngx-spinner> -->
+
+<ion-content>
+  <!-- <app-login></app-login> -->
+  <ion-grid class="background">
+    <ion-row justify-content-center>
+      <ion-col class="zeroOpacity" align-self-center size-md="6" size-lg="7" size-xs="0">
+      </ion-col>
+      <ion-col class="boxShadow" align-self-center size-md="5" size-lg="4" size-xs="12">
+        <div>
+          <ion-progress-bar class="progressBar" *ngIf="showProgressBar" type="indeterminate" color="success"></ion-progress-bar>
+        </div>
+        <form [formGroup]="loginForm" (ngSubmit)="validateLogin(loginForm.value)">
+
+          <div text-center>
+            <h4>
+              <span class="smart">
+                Smart
+              </span>
+              <span class="hire">
+                Hire
+              </span>
+            </h4>
+          </div>
+
+          <div padding>
+            <ion-item>
+              <ion-label id="email" position="floating">Email</ion-label>
+              <ion-icon class="icon" slot="start" name="contact"></ion-icon>
+              <ion-input type="text" formControlName="email">
+              </ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-label id="password" position="floating">Password</ion-label>
+              <ion-icon class="icon" slot="start" name="lock"></ion-icon>
+              <ion-input type="password" formControlName="password"></ion-input>
+            </ion-item>
+          </div>
+
+          <div padding>
+            <ion-row>
+              <ion-col class="noBorder" align-self-center size-md="6" size-lg="6" size-xs="6">
+                <button id="resetIcon" class="btn btn-primary full-width reset" type="reset">
+                  <ion-icon  class="icon fontSizeIcon" name="refresh-circle"></ion-icon>Reset</button>
+              </ion-col>
+              <ion-col class="noBorder" align-self-center size-md="6" size-lg="6" size-xs="6">
+                <button id="loginIcon" class="btn btn-primary full-width login" type="submit" [disabled]="!loginForm.valid">
+                  <ion-icon class="icon fontSizeIcon" name="log-in"></ion-icon>Login</button>
+              </ion-col>
+            </ion-row>
+          </div>
+
+
+          <ion-row justify-content-center>
+            <ion-col class="noBorder" align-self-center size-md="5" size-lg="5" size-xs="5">
+              <hr>
+            </ion-col>
+            <ion-col class="noBorder centreAlign" align-self-center size-md="2" size-lg="2" size-xs="2" id="or">
+              OR
+            </ion-col>
+            <ion-col class="noBorder" align-self-center size-md="5" size-lg="5" size-xs="5">
+              <hr>
+            </ion-col>
+          </ion-row>
+
+
+          <div padding>
+            <ion-button routerLink="/register" routerDirection="root" class="registerBtn" fill="outline" size="default" 
+           id="register" expand="block">Not a member ? Register now</ion-button>
+          </div>
+        </form>
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

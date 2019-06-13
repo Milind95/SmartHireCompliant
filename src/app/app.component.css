@@ -1,0 +1,57 @@
+#mobile {
+    display:none;
+}
+#desktop {
+    display:block;
+}
+.paddingClass{
+    padding: 5%;
+}
+.zeroPaddingAndLeftAlign{
+    padding: 0px;
+    text-align: left;
+}
+.reducedFontSize{
+    font-size: 82%;
+}
+.filterHeader{
+    height: 78.5px;line-height: 4;text-align: center
+}
+.alignSelfAndCenterAlign{
+    align-self: center;
+    text-align: center;
+}
+
+::-webkit-scrollbar {
+    width: 4px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #37abdd; 
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+  }
+
+
+@media (min-width: 240px) and (max-width: 768px) {
+    #desktop {
+        display:none;
+    }
+    #mobile {
+        display:block;
+    }
+}
+
+
+.interviewerFilter{
+    margin-left: 8%;
+}

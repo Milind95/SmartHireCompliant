@@ -1,0 +1,25 @@
+<ion-list class="ionList">
+  <ion-searchbar [(ngModel)]="searchText" (ionChange)="searchValues($event)" animated placeholder="Search Column"></ion-searchbar>
+  <ion-item>
+    <ion-label> {{selectLabel}}
+    </ion-label>
+    <ion-checkbox mode="ios" slot="start" (click)='toogleSelectAll()' [(ngModel)]="selectAll"></ion-checkbox>
+    <ion-icon [name]="!selectAll ? 'done-all':'close'" slot="end">
+    </ion-icon>
+  </ion-item>
+
+  <div class="ionItem">
+    <ng-container *ngFor="let col of allColumns">
+      <ion-item *ngIf="col.isShow">
+        <ion-label>{{col.label}}</ion-label>
+        <ion-checkbox mode="ios" slot="start" (click)='toggle(col)' [(ngModel)]="col.isChecked"></ion-checkbox>
+      </ion-item>
+    </ng-container>
+  </div>
+
+  <ion-item color="danger" (click)="closePopover()">
+    <ion-icon name="close" slot="start">
+    </ion-icon>
+    Close
+  </ion-item>
+</ion-list>

@@ -1,0 +1,67 @@
+.fontSize{
+    font-size: 100%;
+}
+
+.heightAndAlign{
+    height: -webkit-fill-available;
+    display: inline-block;
+    overflow-y: auto;
+}
+.zeroPadding{
+    padding: 0px;
+}
+.someMargin{
+    margin: 4%;
+}
+.height{
+    height: -webkit-fill-available;
+}
+.submitBtnClass{
+    margin: 10%;
+}
+.marginRight{
+    margin-right: 2%;
+}
+
+.ion-color-vibrant {
+    --ion-color-base: #3880ff;
+    --ion-color-base-rgb: 255,255,0;
+    --ion-color-contrast: #ffffff;
+    --ion-color-contrast-rgb: 0,0,0;
+    --ion-color-shade: #3880ff;
+    --ion-color-tint: #3880ff;
+  }
+
+  .dividerClass{
+    border: 1px solid #888888;
+    border-left: 4px solid red;
+    padding: 0px;
+  }
+
+.iconClassCursor{
+    cursor: pointer;
+}
+.enableClass{
+    opacity: 1;
+}
+.disableClass{
+    opacity: 0.5;
+}
+.mandatory{
+    color: red
+}
+
+.technicalHeading{
+    text-align: center;
+    padding: 1%;
+    margin: 2% 5%;
+    font-size: 80%;
+    font-weight: bold;
+    background: #c4c8d2;
+    color: black;
+    border: 1px solid;
+}
+
+.ionItemFullWidth{
+    width: 100%;
+}

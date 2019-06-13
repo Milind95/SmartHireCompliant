@@ -1,0 +1,125 @@
+.candidateInput{
+    margin-top: 6%;
+    background: lightgray;
+}
+
+.somePadding{
+    padding: 2%;
+}
+
+.timeClass{
+    width: 96%;
+    padding: 3%;
+    border: none;
+    margin: 1%;
+    outline: none;
+    background: lightgray;
+}
+
+.saveBtn{
+    font-size: 12px;
+}
+.textAlignCenter{
+    text-align: center
+}
+.reScheduleBtn{
+    width: 100%;
+    height: 150%;
+    font-size: 12px;
+}
+
+.paddingTopLeft{
+    padding-left: 5%;
+    padding-top: 2%;
+}
+
+.selfCentreAlign{
+    align-self: center;
+    background: lightgray;
+}
+
+.fullWidthWithBackground{
+    width: 100%;
+    background: lightgray;
+}
+
+.inputClass{
+    width: 90%;
+    border: navajowhite;
+    background: lightgray;
+    border-radius: 0%;
+    height: 32px;
+    margin-top: 0%;
+    outline: none;
+}
+
+.searchIcon{
+    margin: 1% 1%;
+    vertical-align: middle;
+}
+
+.multipleSlotClass,.participationTypeClass{
+    background: lightgrey;
+}
+
+.interviewTypeClass {
+    width: 100%;
+    padding: 0px;
+}
+
+.fullWidth{
+    width: 100%
+}
+.multiplSlotText,.multipleDaysText{
+    text-align: center;
+    align-self: center;
+    font-weight: bold;
+}
+
+.inputRangeCalendar{
+    width: 88%;
+    background: lightgrey;
+    padding: 2%;
+    border: none;
+}
+
+.calendarIcon{
+    position: absolute;
+}
+
+.fullHeight{
+    height: -webkit-fill-available;
+}
+
+.fontSizeForIonChip{
+    font-size: 85%;
+}
+
+.weekDaysClass{
+    width: 14.2%;
+    text-align: center;
+}
+
+.weekDaysInnerClass{
+    display: inline-grid; 
+}
+
+.checkboxIonRow{
+    background: #d4e7fb;
+    padding: 6px 0px;
+    margin-top: 2%;
+}
+
+.ionList{
+    // background: #abc6f5;
+    // padding: 1%;
+}
+
+.ionIcons{
+    margin: 0px 6px 0px 0px;
+}
+.ionItem{
+    font-size: 14px;
+    font-weight: bold;
+    // color: #3880ff;
+}

@@ -1,0 +1,194 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-grid>
+      <ion-row>
+        <ion-col size-xs="2" size-sm="2">
+          <a routerLink="/booking-view">
+            <ion-icon name="close-circle" size="large"></ion-icon>
+          </a>
+        </ion-col>
+        <ion-col size-xs="10" size-sm="10">
+          <ion-input *ngIf="isRecruiter" [(ngModel)]="candidateName" class="candidateInput" clearInput placeholder="Candidate Name *"></ion-input>
+          <ion-input *ngIf="!isRecruiter" [(ngModel)]="email" class="candidateInput" placeholder="Interviewer email" disabled></ion-input>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <!-- <ion-label position="stacked">Booking Slot</ion-label> -->
+
+      <ion-col size-xs="4" class="selfCentreAlign">
+        <span class="paddingTopLeft">
+          <b>
+            {{bookingDateArray[1]}} {{bookingDateArray[0]}} , {{bookingDateArray[2]}}
+          </b>
+        </span>
+      </ion-col>
+      <ion-col size-xs="8">
+        <input [(ngModel)]="selectedTime" class="timeClass" placeholder="Select Time slot" aria-label="12hr format" [ngxTimepicker]="default"
+          [min]="'8:00 am'" [max]="'8:00 pm'" [format]="12" readonly>
+        <ngx-material-timepicker (timeSet)="timeSet($event)" [minutesGap]="5" #default></ngx-material-timepicker>
+      </ion-col>
+    </ion-row>
+
+
+
+    <!-- <ion-row *ngIf="isRecruiter">
+      <ion-col>
+        <ion-label position="stacked">Interview Type</ion-label>
+        <ion-select class="interviewTypeClass" interface="popover" placeholder="Select Interview Type" [(ngModel)]="interviewType"
+          (ionChange)="intTypeChange($event)">
+          <ion-select-option value="{{iType.id}}" *ngFor="let iType of interviewTypes">{{iType.value}}</ion-select-option>
+        </ion-select>
+      </ion-col>
+    </ion-row> -->
+
+    <!-- <ion-row *ngIf="isRecruiter">
+      <ion-col size-xs="12" size-sm="12" size-md="12">
+        <ion-label position="stacked">Technology</ion-label>
+        <p-dropdown [options]="technologies" [(ngModel)]="selectedTechnology" [filter]="true" filterBy="label,value.name"
+          (onChange)="techChange($event)"></p-dropdown>
+      </ion-col>
+    </ion-row> -->
+
+    <!-- <ion-row *ngIf="isRecruiter">
+      <ion-col size-xs="12" size-sm="12" size-md="12">
+        <ion-label position="stacked">Business Unit</ion-label>
+        <p-dropdown [options]="businessUnits" [(ngModel)]="selectedBussinessUnit" [filter]="true" filterBy="label,value.name"
+          (onChange)="buChange($event)"></p-dropdown>
+      </ion-col>
+    </ion-row>
+
+    <ion-row *ngIf="isRecruiter">
+      <ion-col size-xs="12" size-sm="12" size-md="12">
+        <ion-label position="stacked">Interviewer's Availability</ion-label>
+        <p-dropdown [options]="interviewersArray" [(ngModel)]="selectedInterviewer" [filter]="true" filterBy="label,value.name"
+          (onChange)="interviewerChange($event)"></p-dropdown>
+      </ion-col>
+    </ion-row> -->
+
+    <!-- <ion-row *ngIf="isRecruiter">
+      <ion-col size-xs="12" size-sm="12" size-md="12">
+        <ion-label position="stacked">Comments</ion-label>
+        <ion-textarea [(ngModel)]="comments" class="lightGreyBackground">
+        </ion-textarea>
+      </ion-col>
+    </ion-row> -->
+
+
+    <ion-list *ngIf="isRecruiter" class="ionList">
+      <!-- <ion-list-header>Single Selection</ion-list-header> -->
+
+      <ion-item class="ionItem">
+        <ion-label>Interview Type</ion-label>
+        <ion-icon class="ionIcons" slot="start" mode="ios" name="contacts"></ion-icon>
+        <ion-select class="interviewTypeClass" interface="popover" placeholder="Select Interview Type" [(ngModel)]="interviewType"
+          (ionChange)="intTypeChange($event)">
+          <ion-select-option value="{{iType.id}}" *ngFor="let iType of interviewTypes">{{iType.value}}</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <app-select [label]="'Technology'" [items]="technologies" [selectedItem]="selectedTechnology" [isMultiple]="false" [icon]="'bulb'"
+        [searchFilter]="true" (output)="getTechnology($event)">
+      </app-select>
+
+      <app-select [label]="'Business Unit'" [items]="businessUnits" [selectedItem]="selectedBussinessUnit" [isMultiple]="false"
+        [icon]="'business'" [searchFilter]="false" (output)="getBU($event)">
+      </app-select>
+
+      <app-select [label]="'Interviewer Availability'" [items]="interviewersArray" [selectedItem]="selectedInterviewer" [icon]="'person'"
+        [searchFilter]="false" [isMultiple]="false" (output)="getInterviewer($event)">
+      </app-select>
+
+      <ion-item class="ionItem">
+        <ion-label [position]="comments && comments.length > 0 ? 'stacked' : 'floating'">Comments</ion-label>
+        <ion-icon class="ionIcons" slot="start" mode="ios" name="chatboxes"></ion-icon>
+        <ion-textarea [(ngModel)]="comments">
+        </ion-textarea>
+      </ion-item>
+    </ion-list>
+
+    <ion-row *ngIf="isInterviewer && !isReScheduleFlag">
+      <ion-col size-xs="3" size-sm="3" size-md="3">
+        <ion-toggle color="success" [(ngModel)]="multipleSlotSlideModel" (ionChange)="toggleMultipleSlots($event)"></ion-toggle>
+      </ion-col>
+      <ion-col size-xs="5" size-sm="5" size-md="5" class="multiplSlotText">
+        <ion-label> {{multipleSlotSlideModel ? 'Disable' : 'Enable'}} Multiple Slot</ion-label>
+      </ion-col>
+      <ion-col size-xs="4" size-sm="4" size-md="4">
+        <ion-select [disabled]="!multipleSlotSlideModel" class="multipleSlotClass" interface="popover" placeholder="Select Slot"
+          [(ngModel)]="multipleSlotDropdownModel">
+          <ion-select-option value="{{slot.id}}" *ngFor="let slot of multipleSlots">{{slot.value}}</ion-select-option>
+        </ion-select>
+      </ion-col>
+    </ion-row>
+
+    <ion-row *ngIf="isInterviewer && !isReScheduleFlag">
+      <ion-col size-xs="3" size-sm="3" size-md="3">
+        <ion-toggle color="success" [(ngModel)]="multipleDaysSlideModel"></ion-toggle>
+      </ion-col>
+      <ion-col size-xs="5" size-sm="5" size-md="5" class="multipleDaysText">
+        <ion-label> {{multipleDaysSlideModel ? 'Disable' : 'Enable'}} Multiple Days</ion-label>
+      </ion-col>
+    </ion-row>
+
+    <ion-row *ngIf="multipleDaysSlideModel" style="text-align: center;">
+      <ion-col size-xs="12" size-sm="12" size-md="12">
+
+        <!-- <input type="hidden" [min]="bookingDateInDateFormat" [max]="maxDate" class="inputRangeCalendar" [owlDateTime]="dt1" [selectMode]="'rangeTo'"
+          [owlDateTimeTrigger]="dt1" placeholder="Select To date" (dateTimeChange)="getDateDifference($event)"> -->
+
+        <!-- <ion-icon class="calendarIcon" [owlDateTimeTrigger]="dt1" size="large" name="calendar"></ion-icon> -->
+
+        <owl-date-time-inline #dt1 [min]="bookingDateInDateFormat" [selectMode]="'rangeTo'" [(ngModel)]="selectedDateRange" [max]="maxDate"
+          [startAt]="minDate" [pickerType]="'calendar'" (ngModelChange)="dateTimeChangeEvent($event)" [owlDateTimeFilter]="myFilter"></owl-date-time-inline>
+
+      </ion-col>
+    </ion-row>
+
+    <ion-row *ngIf="multipleDaysSlideModel && showCheckBox" class="checkboxIonRow">
+      <div *ngFor="let day of weekDays" class="weekDaysClass">
+        <span class="weekDaysInnerClass">
+          <strong [ngStyle]="{'opacity' : day.isDisabled ? '0.3' : '1' }">
+            {{day.value}}
+          </strong>
+          <ion-checkbox [(ngModel)]="day.isChecked" [checked]="day.isChecked" [disabled]="day.isDisabled" mode="ios" (ionChange)="checkBoxChange($event,day)"></ion-checkbox>
+        </span>
+
+      </div>
+    </ion-row>
+
+    <ion-row *ngIf="isInterviewer">
+      <ion-col size-xs="12" size-sm="12" size-md="12">
+        <ion-label position="stacked">Participation Type</ion-label>
+        <ion-select class="participationTypeClass" interface="popover" placeholder="Select Participation Type" [(ngModel)]="participationType">
+          <ion-select-option value="{{pType.id}}" *ngFor="let pType of participationTypes">{{pType.value}}</ion-select-option>
+        </ion-select>
+      </ion-col>
+    </ion-row>
+
+
+
+
+    <ion-row>
+      <ion-col size-xs="3" size-sm="3" size-md="3">
+
+      </ion-col>
+      <ion-col size-xs="6" size-sm="6" size-md="6" class="textAlignCenter">
+        <ion-button *ngIf="isReScheduleFlag && !panelAvailabilityFlag" class="reScheduleBtn" (click)="!isRecruiter ? rescheduleBookingSlotInterviewer() : rescheduleBookingSlotRecruiter()">Reschedule</ion-button>
+
+        <ion-button *ngIf="!isReScheduleFlag || panelAvailabilityFlag" class="saveBtn" (click)="!isRecruiter ? saveBookingSlotInterviewer() : saveBookingSlotRecruiter()">Save</ion-button>
+      </ion-col>
+      <ion-col size-xs="3" size-sm="3" size-md="3">
+
+      </ion-col>
+    </ion-row>
+
+
+  </ion-grid>
+</ion-content>

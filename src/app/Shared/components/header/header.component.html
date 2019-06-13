@@ -1,0 +1,53 @@
+<div class="row">
+  <div class="col-md-1 col-lg-1 col-xl-1 textAlign zeroPadding">
+    <img src="../assets/images/capglogo.ico" height="50px" width="50px" />
+  </div>
+  <div class="col-md-3 col-lg-2 col-xl-2 textAlign zeroPadding">
+    <span class="smarthire">SMART HIRE </span>
+  </div>
+  <div class="col-md-2 col-lg-4 col-xl-5 zeroPadding">
+    <nav class="navbar navbar-expand-sm">
+      <ul class="navbar-nav">
+        <li *ngIf="routerUrl === '/webFeedback'" class="nav-item navButtons" style="margin-right: 5px;" (click)="reportsSection()">
+            <a class="nav-link padding"> <ion-icon name="document" ></ion-icon>
+            <span class="optionStyle">
+              Dashboard
+            </span>
+          </a>
+        </li>
+        <li *ngIf="recuiterFlag" class="nav-item navButtons" style="margin-right: 5px;" (click)="reportPage(pageName)">
+          <a class="nav-link padding"> <ion-icon name="document" ></ion-icon>
+            <span class="optionStyle">
+                {{pageName}}
+            </span>
+          </a>
+        </li>
+        <li *ngIf="recuiterFlag" class="nav-item navButtons" (click)="interviewerCheckEvent($event)">
+          <a class="nav-link padding"> <ion-icon name="search" size="default"></ion-icon> <span class="optionStyle">
+              Check Panel Availability
+          </span> </a>
+         </li>
+      </ul>
+    </nav>
+     </div>
+     
+      <div class="col-md-1 col-lg-1 col-xl-1 textAlign zeroPadding">
+     <ion-icon ios="ios-download" md="md-download" (click)=" downloadFeedbackForm()"></ion-icon>   
+    </div> 
+  
+  <div class="col-md-5 col-lg-4 col-xl-3 textAlign zeroPadding">
+    <ion-chip class="logOutChip">
+      <ion-icon name="contact"></ion-icon>
+      <ion-label>
+        {{email}}
+      </ion-label>
+      <ion-icon name="arrow-dropdown" [matMenuTriggerFor]="menu"></ion-icon>
+    </ion-chip>
+    <mat-menu #menu="matMenu">
+      <button class="logoutBtn" mat-menu-item (click)="logout()">
+        <ion-icon class="logoutIcon" size="default" name="log-out"></ion-icon>
+        Logout
+      </button>
+    </mat-menu>
+  </div>
+</div>

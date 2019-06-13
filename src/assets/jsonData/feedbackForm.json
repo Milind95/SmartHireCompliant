@@ -1,0 +1,567 @@
+{
+    "response": [
+        {
+            "formDetailsDTO": {
+                "candidateName": "asas",
+                "interviewerName": "Akshat",
+                "interviewerId": 1,
+                "grade": "B1",
+                "organization": "TCG - Industrial Unit - AppsNA-CSD",
+                "skill": "Angular",
+                "interviewDate": "03-04-2019",
+                "feedbackStatus": 3,
+                "participationId": 1
+            },
+            "feedbackFormDTO": [
+                {
+                    "masterHeading": "Candidate Details - II",
+                    "feedbackSubFormDTOs": [
+                        {
+                            "formDetailId": 4,
+                            "heading": "Total Years of Exp",
+                            "isRequired": true,
+                            "dataType": "number",
+                            "dropdownHint": null,
+                            "description": null,
+                            "isButton": null,
+                            "size": 0,
+                            "response": "1",
+                            "feedbackSubFormDTOs": null
+                        },
+                        {
+                            "formDetailId": 7,
+                            "heading": "Relevant years of exp",
+                            "isRequired": true,
+                            "dataType": "number",
+                            "dropdownHint": null,
+                            "description": null,
+                            "isButton": null,
+                            "size": 0,
+                            "response": "1",
+                            "feedbackSubFormDTOs": null
+                        },
+                        {
+                            "formDetailId": 8,
+                            "heading": "Interview Location",
+                            "isRequired": true,
+                            "dataType": "text",
+                            "dropdownHint": null,
+                            "description": null,
+                            "isButton": null,
+                            "size": 0,
+                            "response": "Pune",
+                            "feedbackSubFormDTOs": null
+                        }
+                    ]
+                },
+                {
+                    "masterHeading": "Technical Evaluation",
+                    "feedbackSubFormDTOs": [
+                        {
+                            "formDetailId": 21,
+                            "heading": "Dealing with Business",
+                            "isRequired": false,
+                            "dataType": null,
+                            "dropdownHint": null,
+                            "description": null,
+                            "isButton": null,
+                            "size": 0,
+                            "response": "",
+                            "feedbackSubFormDTOs": [
+                                {
+                                    "formDetailId": 22,
+                                    "heading": "Competency",
+                                    "isRequired": false,
+                                    "dataType": null,
+                                    "dropdownHint": null,
+                                    "description": "Problem Solving / Analytical Ability",
+                                    "isButton": null,
+                                    "size": 1,
+                                    "response": null,
+                                    "feedbackSubFormDTOs": [
+                                        {
+                                            "formDetailId": 23,
+                                            "heading": "Description",
+                                            "isRequired": false,
+                                            "dataType": null,
+                                            "dropdownHint": null,
+                                            "description": "Ability to tackle a problem by using logical, sytematic, sequential approach.",
+                                            "isButton": null,
+                                            "size": 1,
+                                            "response": null,
+                                            "feedbackSubFormDTOs": [
+                                                {
+                                                    "formDetailId": 24,
+                                                    "heading": "Rating",
+                                                    "isRequired": true,
+                                                    "dataType": "Dropdown",
+                                                    "dropdownHint": "Rating",
+                                                    "description": null,
+                                                    "isButton": null,
+                                                    "size": 1,
+                                                    "response": "",
+                                                    "feedbackSubFormDTOs": [
+                                                        {
+                                                            "formDetailId": 25,
+                                                            "heading": "Description",
+                                                            "isRequired": true,
+                                                            "dataType": "text",
+                                                            "dropdownHint": null,
+                                                            "description": null,
+                                                            "isButton": null,
+                                                            "size": 0,
+                                                            "response": "",
+                                                            "feedbackSubFormDTOs": null
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "formDetailId": 26,
+                                    "heading": "Competency",
+                                    "isRequired": false,
+                                    "dataType": null,
+                                    "dropdownHint": null,
+                                    "description": "Business and Job Knowledge",
+                                    "isButton": null,
+                                    "size": 1,
+                                    "response": null,
+                                    "feedbackSubFormDTOs": [
+                                        {
+                                            "formDetailId": 27,
+                                            "heading": "Description",
+                                            "isRequired": false,
+                                            "dataType": null,
+                                            "dropdownHint": null,
+                                            "description": "With special reference to function for which he/she is being interviewed",
+                                            "isButton": null,
+                                            "size": 1,
+                                            "response": null,
+                                            "feedbackSubFormDTOs": [
+                                                {
+                                                    "formDetailId": 28,
+                                                    "heading": "Rating",
+                                                    "isRequired": true,
+                                                    "dataType": "Dropdown",
+                                                    "dropdownHint": "Rating",
+                                                    "description": null,
+                                                    "isButton": null,
+                                                    "size": 1,
+                                                    "response": "",
+                                                    "feedbackSubFormDTOs": [
+                                                        {
+                                                            "formDetailId": 29,
+                                                            "heading": "Description",
+                                                            "isRequired": true,
+                                                            "dataType": "text",
+                                                            "dropdownHint": null,
+                                                            "description": null,
+                                                            "isButton": null,
+                                                            "size": 0,
+                                                            "response": "",
+                                                            "feedbackSubFormDTOs": null
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "formDetailId": 30,
+                                    "heading": "Competency",
+                                    "isRequired": false,
+                                    "dataType": null,
+                                    "dropdownHint": null,
+                                    "description": "Technical/Functional Experience & Exposure",
+                                    "isButton": true,
+                                    "size": 3,
+                                    "response": null,
+                                    "feedbackSubFormDTOs": [
+                                        {
+                                            "formDetailId": 31,
+                                            "heading": "Description",
+                                            "isRequired": true,
+                                            "dataType": "Dropdown",
+                                            "dropdownHint": "Skill",
+                                            "description": "Technical Area 1",
+                                            "isButton": null,
+                                            "size": 1,
+                                            "response": "43069",
+                                            "feedbackSubFormDTOs": [
+                                                {
+                                                    "formDetailId": 34,
+                                                    "heading": "Rating",
+                                                    "isRequired": true,
+                                                    "dataType": "Dropdown",
+                                                    "dropdownHint": "Rating",
+                                                    "description": null,
+                                                    "isButton": null,
+                                                    "size": 1,
+                                                    "response": "3",
+                                                    "feedbackSubFormDTOs": [
+                                                        {
+                                                            "formDetailId": 37,
+                                                            "heading": "Description",
+                                                            "isRequired": true,
+                                                            "dataType": "text",
+                                                            "dropdownHint": null,
+                                                            "description": null,
+                                                            "isButton": null,
+                                                            "size": 0,
+                                                            "response": "good",
+                                                            "feedbackSubFormDTOs": null
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "formDetailId": 32,
+                                            "heading": "Description",
+                                            "isRequired": true,
+                                            "dataType": "Dropdown",
+                                            "dropdownHint": "Skill",
+                                            "description": "Technical Area 2",
+                                            "isButton": null,
+                                            "size": 1,
+                                            "response": "43069",
+                                            "feedbackSubFormDTOs": [
+                                                {
+                                                    "formDetailId": 35,
+                                                    "heading": "Rating",
+                                                    "isRequired": true,
+                                                    "dataType": "Dropdown",
+                                                    "dropdownHint": "Rating",
+                                                    "description": null,
+                                                    "isButton": null,
+                                                    "size": 1,
+                                                    "response": "4",
+                                                    "feedbackSubFormDTOs": [
+                                                        {
+                                                            "formDetailId": 38,
+                                                            "heading": "Description",
+                                                            "isRequired": true,
+                                                            "dataType": "text",
+                                                            "dropdownHint": null,
+                                                            "description": null,
+                                                            "isButton": null,
+                                                            "size": 0,
+                                                            "response": "great",
+                                                            "feedbackSubFormDTOs": null
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        },
+                                        {
+                                            "formDetailId": 33,
+                                            "heading": "Description",
+                                            "isRequired": true,
+                                            "dataType": "Dropdown",
+                                            "dropdownHint": "Skill",
+                                            "description": "Technical Area 3",
+                                            "isButton": null,
+                                            "size": 1,
+                                            "response": "",
+                                            "feedbackSubFormDTOs": [
+                                                {
+                                                    "formDetailId": 36,
+                                                    "heading": "Rating",
+                                                    "isRequired": true,
+                                                    "dataType": "Dropdown",
+                                                    "dropdownHint": "Rating",
+                                                    "description": null,
+                                                    "isButton": null,
+                                                    "size": 1,
+                                                    "response": "",
+                                                    "feedbackSubFormDTOs": [
+                                                        {
+                                                            "formDetailId": 39,
+                                                            "heading": "Description",
+                                                            "isRequired": true,
+                                                            "dataType": "text",
+                                                            "dropdownHint": null,
+                                                            "description": null,
+                                                            "isButton": null,
+                                                            "size": 0,
+                                                            "response": "",
+                                                            "feedbackSubFormDTOs": null
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        },
+                        {
+                            "formDetailId": 60,
+                            "heading": "Dealing with People / Self",
+                            "isRequired": false,
+                            "dataType": null,
+                            "dropdownHint": null,
+                            "description": null,
+                            "isButton": null,
+                            "size": 0,
+                            "response": "",
+                            "feedbackSubFormDTOs": [
+                                {
+                                    "formDetailId": 61,
+                                    "heading": "Competency",
+                                    "isRequired": false,
+                                    "dataType": null,
+                                    "dropdownHint": null,
+                                    "description": "Initiative",
+                                    "isButton": null,
+                                    "size": 1,
+                                    "response": null,
+                                    "feedbackSubFormDTOs": [
+                                        {
+                                            "formDetailId": 68,
+                                            "heading": "Description",
+                                            "isRequired": false,
+                                            "dataType": null,
+                                            "dropdownHint": null,
+                                            "description": "Ability to propose & start new things on his/her own without guidance & supervision",
+                                            "isButton": null,
+                                            "size": 1,
+                                            "response": null,
+                                            "feedbackSubFormDTOs": [
+                                                {
+                                                    "formDetailId": 75,
+                                                    "heading": "Rating",
+                                                    "isRequired": true,
+                                                    "dataType": "Dropdown",
+                                                    "dropdownHint": "Rating",
+                                                    "description": null,
+                                                    "isButton": null,
+                                                    "size": 1,
+                                                    "response": "",
+                                                    "feedbackSubFormDTOs": [
+                                                        {
+                                                            "formDetailId": 82,
+                                                            "heading": "Description",
+                                                            "isRequired": true,
+                                                            "dataType": "text",
+                                                            "dropdownHint": null,
+                                                            "description": null,
+                                                            "isButton": null,
+                                                            "size": 0,
+                                                            "response": "",
+                                                            "feedbackSubFormDTOs": null
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "formDetailId": 62,
+                                    "heading": "Competency",
+                                    "isRequired": false,
+                                    "dataType": null,
+                                    "dropdownHint": null,
+                                    "description": "Communication and Interpersoal Skills",
+                                    "isButton": null,
+                                    "size": 1,
+                                    "response": null,
+                                    "feedbackSubFormDTOs": [
+                                        {
+                                            "formDetailId": 69,
+                                            "heading": "Description",
+                                            "isRequired": false,
+                                            "dataType": null,
+                                            "dropdownHint": null,
+                                            "description": "Verbal, Non Verbal and Written ability to articulate ones thought",
+                                            "isButton": null,
+                                            "size": 1,
+                                            "response": null,
+                                            "feedbackSubFormDTOs": [
+                                                {
+                                                    "formDetailId": 76,
+                                                    "heading": "Rating",
+                                                    "isRequired": true,
+                                                    "dataType": "Dropdown",
+                                                    "dropdownHint": "Rating",
+                                                    "description": null,
+                                                    "isButton": null,
+                                                    "size": 1,
+                                                    "response": "",
+                                                    "feedbackSubFormDTOs": [
+                                                        {
+                                                            "formDetailId": 83,
+                                                            "heading": "Description",
+                                                            "isRequired": true,
+                                                            "dataType": "text",
+                                                            "dropdownHint": null,
+                                                            "description": null,
+                                                            "isButton": null,
+                                                            "size": 0,
+                                                            "response": "",
+                                                            "feedbackSubFormDTOs": null
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "formDetailId": 63,
+                                    "heading": "Competency",
+                                    "isRequired": false,
+                                    "dataType": null,
+                                    "dropdownHint": null,
+                                    "description": "Self Confidence",
+                                    "isButton": null,
+                                    "size": 1,
+                                    "response": null,
+                                    "feedbackSubFormDTOs": [
+                                        {
+                                            "formDetailId": 70,
+                                            "heading": "Description",
+                                            "isRequired": false,
+                                            "dataType": null,
+                                            "dropdownHint": null,
+                                            "description": "Faith in one's own ideas and capability to be successful; willingness to take an independent position in the face of opposition",
+                                            "isButton": null,
+                                            "size": 1,
+                                            "response": null,
+                                            "feedbackSubFormDTOs": [
+                                                {
+                                                    "formDetailId": 77,
+                                                    "heading": "Rating",
+                                                    "isRequired": true,
+                                                    "dataType": "Dropdown",
+                                                    "dropdownHint": "Rating",
+                                                    "description": null,
+                                                    "isButton": null,
+                                                    "size": 1,
+                                                    "response": "",
+                                                    "feedbackSubFormDTOs": [
+                                                        {
+                                                            "formDetailId": 84,
+                                                            "heading": "Description",
+                                                            "isRequired": true,
+                                                            "dataType": "text",
+                                                            "dropdownHint": null,
+                                                            "description": null,
+                                                            "isButton": null,
+                                                            "size": 0,
+                                                            "response": "",
+                                                            "feedbackSubFormDTOs": null
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                },
+                                {
+                                    "formDetailId": 64,
+                                    "heading": "Competency",
+                                    "isRequired": false,
+                                    "dataType": null,
+                                    "dropdownHint": null,
+                                    "description": "Flexibility",
+                                    "isButton": null,
+                                    "size": 1,
+                                    "response": null,
+                                    "feedbackSubFormDTOs": [
+                                        {
+                                            "formDetailId": 71,
+                                            "heading": "Description",
+                                            "isRequired": false,
+                                            "dataType": null,
+                                            "dropdownHint": null,
+                                            "description": "Willingness to work in Shifts;Relocation - Onsite/Local",
+                                            "isButton": null,
+                                            "size": 1,
+                                            "response": null,
+                                            "feedbackSubFormDTOs": [
+                                                {
+                                                    "formDetailId": 78,
+                                                    "heading": "Rating",
+                                                    "isRequired": true,
+                                                    "dataType": "Dropdown",
+                                                    "dropdownHint": "Rating",
+                                                    "description": null,
+                                                    "isButton": null,
+                                                    "size": 1,
+                                                    "response": "1",
+                                                    "feedbackSubFormDTOs": [
+                                                        {
+                                                            "formDetailId": 85,
+                                                            "heading": "Description",
+                                                            "isRequired": true,
+                                                            "dataType": "text",
+                                                            "dropdownHint": null,
+                                                            "description": null,
+                                                            "isButton": null,
+                                                            "size": 0,
+                                                            "response": "",
+                                                            "feedbackSubFormDTOs": null
+                                                        }
+                                                    ]
+                                                }
+                                            ]
+                                        }
+                                    ]
+                                }
+                            ]
+                        }
+                    ]
+                },
+                {
+                    "masterHeading": "Overall Remarks",
+                    "feedbackSubFormDTOs": [
+                        {
+                            "formDetailId": 101,
+                            "heading": "Candidate seems strong in",
+                            "isRequired": true,
+                            "dataType": "text",
+                            "dropdownHint": null,
+                            "description": null,
+                            "isButton": null,
+                            "size": 0,
+                            "response": "Java",
+                            "feedbackSubFormDTOs": null
+                        },
+                        {
+                            "formDetailId": 102,
+                            "heading": "Candidates require training on",
+                            "isRequired": true,
+                            "dataType": "text",
+                            "dropdownHint": null,
+                            "description": null,
+                            "isButton": null,
+                            "size": 0,
+                            "response": "angular",
+                            "feedbackSubFormDTOs": null
+                        },
+                        {
+                            "formDetailId": 103,
+                            "heading": "Others",
+                            "isRequired": true,
+                            "dataType": "text",
+                            "dropdownHint": null,
+                            "description": null,
+                            "isButton": null,
+                            "size": 0,
+                            "response": "none",
+                            "feedbackSubFormDTOs": null
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "message": "FEEDBACK FORM GENERATED SUCCESSFULLY",
+    "exception": null
+}

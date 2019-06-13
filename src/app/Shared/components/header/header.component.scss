@@ -1,0 +1,65 @@
+.smarthire{
+    color:#075B9B;
+    font-weight:normal;
+    font-size: 27px;
+    margin-left:10px;
+ }
+
+ .reports{
+    float: right;
+    padding: 2%;
+    border: 1px solid lightpink;
+    color: hotpink;
+    opacity: 0.6;
+    border-radius: 6%;
+    cursor: pointer;
+    text-underline-position: under;
+    text-decoration: underline;
+}
+.reportIcon{
+    position: relative;
+    top: 2px;
+}
+
+.logoutBtn{
+    border: none;
+    outline: none;
+    background: #73c4e7;
+}
+.logoutIcon{
+    font-size: 125%;
+    position: relative;
+    top: 3px;
+}
+
+.textAlign{
+    align-self: center;
+    text-align: center;
+}
+.zeroPadding{
+    padding: 0px;
+}
+.navButtons{
+    cursor: pointer;
+    background: #73c4e7;
+    color: white;
+    border-radius: 5px;
+    opacity: 1;
+}
+.navButtons:hover{
+    background: #73c4e7;
+    opacity: 0.9;
+}
+.padding{
+    padding: 2px 8px;
+}
+
+.logOutChip{
+    background: #73c4e7;
+    color: black;
+}
+
+.optionStyle{
+    font-size: 80%;
+    color: black
+}

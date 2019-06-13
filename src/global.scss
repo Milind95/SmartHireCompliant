@@ -1,0 +1,213 @@
+// http://ionicframework.com/docs/theming/
+@import '~@ionic/angular/css/core.css';
+@import '~@ionic/angular/css/normalize.css';
+@import '~@ionic/angular/css/structure.css';
+@import '~@ionic/angular/css/typography.css';
+
+@import '~@ionic/angular/css/padding.css';
+@import '~@ionic/angular/css/float-elements.css';
+@import '~@ionic/angular/css/text-alignment.css';
+@import '~@ionic/angular/css/text-transformation.css';
+@import '~@ionic/angular/css/flex-utils.css';
+@import "../node_modules/angular-calendar/css/angular-calendar.css";
+@import "~ng-pick-datetime/assets/style/picker.min.css";
+
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1050;
+    display: contents !important;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    outline: 0;
+}
+
+.cal-month-view .cal-header .cal-cell {
+    background: #37abdd;
+    color: white;
+    border-right: 1px solid white;
+}
+
+.cal-month-view .cal-header .cal-cell:hover {
+    background: #37abdd;
+    color: white;
+    border-right: 2px solid white;
+}
+
+.cal-month-view .cal-day-badge {
+    margin-top: 5px;
+    margin-left: 5px;
+    background-color: #68cd9a; 
+}
+
+.cal-month-view .cal-cell-top {
+    min-height: 40px;
+}
+.carousel-control-prev {
+    margin-left: -3% !important;
+    background: #dee2e6;
+    width: 3% !important;
+}
+.carousel-control-next{
+    margin-right: -3% !important;
+    background: #dee2e6;
+    width: 3% !important;
+}
+
+.mat-tab-label {
+    height: 40px !important;
+    padding: 0px 15px !important;
+    min-width: 105px !important;
+}
+
+.ngx-datatable.material .datatable-header {
+    background: #73c4e7 !important;
+}
+.ngx-datatable.fixed-header .datatable-header .datatable-header-inner .datatable-header-cell {
+    font-weight: bold;
+    // min-width: 120px !important;
+    // max-width: 185px !important;
+}
+
+.datatable-body-cell {
+    font-size: 12px !important;
+    // min-width: 120px !important;
+    // max-width: 185px !important;
+}
+::-webkit-scrollbar {
+    width: 6px;
+    height: 7px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #37abdd; 
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+  }
+
+  .mat-checkbox-checked.mat-accent .mat-checkbox-background, .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
+    background-color: #0f82ff !important;
+}
+  
+@media (min-width: 240px) and (max-width: 768px) {
+
+    .cal-month-view .cal-day-cell {
+        min-height: 45px;
+    }
+    
+    .cal-month-view .cal-cell-top {
+        min-height: 40px;
+        flex: 1;
+    }
+
+    .cal-month-view .cal-day-badge {
+        display: none;
+    }
+
+    .cal-month-view .cal-cell-row {
+        font-size: 11px;
+    }
+    .cal-month-view{
+        margin-top: 2%;
+    }
+    .cal-month-view .cal-day-number {
+        font-size: 1.2em;
+        font-weight: 400;
+        opacity: 1;
+        margin-top: 5px;
+        margin-right: 5px;
+        float: right;
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+
+    .ui-dropdown {
+        width:100%
+        }
+
+    .ui-card {
+        margin: 2%
+    }
+    .mat-expansion-panel-body {
+        padding: 0 0px 0px !important;
+    }
+    .mat-expansion-panel-header {
+        padding: 0 4px !important;
+    }
+
+    .mat-expansion-panel-header-description, .mat-expansion-panel-header-title {
+        display: flex;
+        flex-grow: 2 !important;
+        margin-right: 2px !important;
+    }
+
+    .mat-expansion-panel:not(.mat-expanded):not([aria-disabled=true]) .mat-expansion-panel-header:hover {
+    background: inherit !important;
+    }
+
+    ::-webkit-scrollbar {
+        width: 6px;
+        height: 3px;
+      }
+
+}
+
+.ngx-datatable.material .datatable-body .datatable-body-row .datatable-body-cell {
+    // width: 145px !important;
+    // min-width: 80px !important;
+    // max-width: 100px !important;
+    padding: 4px 10px !important;
+}
+
+.ngx-datatable.material .datatable-header .datatable-header-cell {
+    // width: 145px !important;
+    // min-width: 80px !important;
+    // max-width: 100px !important;
+
+    padding: 4px 10px !important;
+    align-self: flex-end !important;
+    white-space: pre-line !important;
+
+}
+
+.ngx-datatable.material.single-selection .datatable-body-row.active, .ngx-datatable.material.single-selection .datatable-body-row.active .datatable-row-group, .ngx-datatable.material.multi-selection .datatable-body-row.active, .ngx-datatable.material.multi-selection .datatable-body-row.active .datatable-row-group, .ngx-datatable.material.multi-click-selection .datatable-body-row.active, .ngx-datatable.material.multi-click-selection .datatable-body-row.active .datatable-row-group {
+    background-color: #73c4e7 !important;
+    color: #FFF;
+}
+
+sup {
+    top: -8px !important;
+    left: 3px !important;
+}
+
+.owl-dt-container {
+    z-index: 998 !important;
+    // width: 100% !important;
+}
+.owl-dt-inline {
+    // width: 100% !important;
+}
+.owl-dt-inline-container .owl-dt-calendar, .owl-dt-popup-container .owl-dt-calendar {
+    height: 22.25em !important;
+}
+
+
+.ionic-selectable-label-default .ionic-selectable-value, .ionic-selectable-label-fixed .ionic-selectable-value {
+    padding: 0px !important;
+}
+
+.item.sc-ion-label-md-h, .item .sc-ion-label-md-h {
+    white-space: pre-line !important;
+}

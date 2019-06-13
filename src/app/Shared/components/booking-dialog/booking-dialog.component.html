@@ -1,0 +1,409 @@
+<!-- <ngx-spinner *ngIf="devWidth >= 768" bdColor="rgba(51,51,51,0.8)"  size="medium"  color="#fff"  type="timer">
+  <p style="font-size: 20px; color: white">Please Wait...</p>
+</ngx-spinner> -->
+
+<div class="container" style="margin-right: 0px;padding-right: 0px;">
+  <div class="row" style="width: 100%;margin-right: 0px">
+
+
+
+    <div *ngIf="!pastDateDialog"
+      class="col-sm-{{gridWidth}} col-md-{{gridWidth}} col-lg-{{gridWidth}} col-xl-{{gridWidth}}" style="padding: 8px;">
+      <mat-card style="height:100%">
+        <mat-card-header>
+          <mat-card-subtitle style="    color: #007bff;
+          font-size: 115%;">{{dialogTitle}}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+
+          <form [formGroup]="saveSlotForm" (ngSubmit)="saveSlot(saveSlotForm.value)">
+
+            <div class="formControlInputs">
+              <mat-form-field *ngIf="!recruiterFlag" class="dialog-full-width" appearance="outline"
+                class="recruiterElements">
+                <mat-label>Email Id</mat-label>
+                <input matInput placeholder="Enter Name" [value]="data.email" disabled>
+              </mat-form-field>
+
+              <mat-form-field *ngIf="recruiterFlag" class="dialog-full-width" appearance="outline"
+                class="recruiterElements">
+                <mat-label>Full Name</mat-label>
+                <input matInput placeholder="Enter Candidate Name" formControlName="name">
+              </mat-form-field>
+
+              <div class="row">
+                <div
+                  class="col-sm-{{halfGridWidth}} col-md-{{halfGridWidth}} col-lg-{{halfGridWidth}} col-xl-{{halfGridWidth}}">
+                  <mat-form-field appearance="outline" class="recruiterElements">
+                    <mat-label>From Date</mat-label>
+                    <input matInput placeholder="From" [value]="fromDate" disabled>
+                  </mat-form-field>
+                </div>
+
+                <div
+                  class="col-sm-{{halfGridWidth}} col-md-{{halfGridWidth}} col-lg-{{halfGridWidth}} col-xl-{{halfGridWidth}}">
+                  <mat-form-field appearance="outline" class="recruiterElements">
+                    <mat-label>Time Slot</mat-label>
+                    <input matInput formControlName="timeSlot" placeholder="Pick the suitable time"
+                      aria-label="12hr format" [ngxTimepicker]="range" min="08:00 am" max="08:00 pm"
+                      [disableClick]="true" class="fromDateWidth" readonly>
+                    <ngx-material-timepicker-toggle class="timeIconClass" [for]="range">
+                    </ngx-material-timepicker-toggle>
+
+                  </mat-form-field>
+
+                  <ngx-material-timepicker #range [defaultTime]="'08:00 am'" (closed)="selectedTime()">
+                  </ngx-material-timepicker>
+                </div>
+              </div>
+
+              <div *ngIf="!recruiterFlag && !isRescheduleFlag" class="row">
+                <div
+                  class="col-sm-{{halfGridWidth}} col-md-{{halfGridWidth}} col-lg-{{halfGridWidth}} col-xl-{{halfGridWidth}}">
+                  <!-- <mat-checkbox class="checkbox" (change)="toggle($event)">{{checkboxName}}</mat-checkbox> -->
+                  <mat-slide-toggle [color]="primary" (change)="toggle($event)">
+                    {{checkboxName}}
+                  </mat-slide-toggle>
+                </div>
+                <div
+                  class="col-sm-{{halfGridWidth}} col-md-{{halfGridWidth}} col-lg-{{halfGridWidth}} col-xl-{{halfGridWidth}}"
+                  style="text-align: center" *ngIf="show">
+                  <!-- <mat-form-field appearance="outline" class="recruiterElements">
+                    <mat-select formControlName="slotValue" placeholder="Select Slots">
+                      <mat-option value="8"> 8</mat-option>
+                      <mat-option value="4"> 4</mat-option>
+                    </mat-select>
+                  </mat-form-field> -->
+
+                  <button type="button" mat-raised-button *ngFor="let slot of multiSlots; let i=index"
+                    formControlName="slotValue" ngDefaultControl class="card"
+                    [ngClass]="{'slotPicked':slot.checked, 'slotUnPicked':!slot.checked}"
+                    (click)="multiSlotsEvent(slot,i)" style="margin-right: 5%;">
+                    <span style="font-size: 18px;">{{slot.value}}</span>
+                  </button>
+
+                </div>
+
+              </div>
+              <div class="row" *ngIf="!recruiterFlag && !isRescheduleFlag">
+
+                <div
+                  class="col-sm-{{halfGridWidth}} col-md-{{halfGridWidth}} col-lg-{{halfGridWidth}} col-xl-{{halfGridWidth}}">
+                  <!-- <mat-checkbox class="checkbox1" (change)="toggle1($event)">{{checkboxName1}}</mat-checkbox> -->
+                  <mat-slide-toggle [color]="primary" (change)="toggle1($event)">
+                    {{checkboxName1}}
+                  </mat-slide-toggle>
+                </div>
+
+                <div
+                  class="col-sm-{{halfGridWidth}} col-md-{{halfGridWidth}} col-lg-{{halfGridWidth}} col-xl-{{halfGridWidth}}">
+                  <mat-form-field *ngIf="showbookingform" appearance="outline" class="fullMatFormField"
+                    style="opacity: 1;">
+                    <input formControlName="multipleDays" value="saveSlotForm.value.multipleDays" matInput
+                      (dateChange)="toDateClick($event)" [min]="minDate" [max]="maxDate" [matDatepicker]="picker"
+                      style="opacity: 0.8;" placeholder="To date" disabled>
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker disabled="false"></mat-datepicker>
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div class="row" style="margin-top: 2%;" *ngIf="!recruiterFlag && showbookingform && dateClicked">
+                <div class="col-sm-{{gridWidth}} col-md-{{gridWidth}} col-lg-{{gridWidth}} col-xl-{{gridWidth}}">
+                  <div class="alert alert-warning" style="margin: 0;">Please Select the ToDate!</div>
+                </div>
+              </div>
+
+              <div class="row" *ngIf="!recruiterFlag && !isRescheduleFlag">
+                <ng-container *ngIf="showbooking">
+                  <div class="col-lg-2"></div>
+                  <div *ngFor="let day of days" [ngStyle]="{'opacity': day.checked ? '1.0':'0.3',
+                    'background': day.selected? '#007bff':'#59a9ff'}" class="col-lg-1 col-xs-1 multiDaysClass"
+                    type="button" (click)="daysClickedFun(day)">
+                    <span>{{day.name}}</span>
+                  </div>
+                  <!-- <div *ngIf="show2" style="width: 100%">
+                    <table>
+                      <tr>
+                        <td *ngFor="let day of days1; let i = index;" >
+                          <mat-checkbox (change)="onCheckboxChagen($event, day.value)" [disabled]="!day.checked">
+                            {{day.name}}
+                          </mat-checkbox>
+                          <button type="button"
+                             style="margin-right: 5%;">
+                            <span>{{day.name}}</span>
+                          </button>
+                          <div class="btn_day" href="#"><span>{{day.name}}</span></div>
+                        </td>
+                      </tr>
+                    </table>
+
+
+
+                  </div> -->
+                </ng-container>
+                <!-- </div> -->
+              </div>
+
+              <div class="row" style="margin-top: 2%;" *ngIf="  !recruiterFlag && showbooking && daysClicked">
+                <div class="col-sm-{{gridWidth}} col-md-{{gridWidth}} col-lg-{{gridWidth}} col-xl-{{gridWidth}}">
+                  <div class="alert alert-warning" style="margin: 0;">Please Select Days!</div>
+                </div>
+              </div>
+
+              <div *ngIf="!recruiterFlag" class="row" style="margin-top: 6%;margin-bottom: 2%;">
+                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                  <mat-radio-group formControlName="participationType">
+                    <mat-radio-button style="width: 50%;" [ngStyle]="{
+                      'text-align': i === 0 ? 'centre' : 'left'
+                    }" [value]="par.id" *ngFor="let par of participationArray;let i = index">{{par.value}}
+                    </mat-radio-button>
+                  </mat-radio-group>
+                </div>
+              </div>
+
+              <div *ngIf="recruiterFlag" class="row">
+                <div
+                  class="col-sm-{{halfGridWidth}} col-md-{{halfGridWidth}} col-lg-{{halfGridWidth}} col-xl-{{halfGridWidth}}">
+                  <mat-form-field appearance="outline" class="recruiterElements">
+                    <mat-label>Interview Type</mat-label>
+                    <mat-select placeholder="Select Interview Type" formControlName="interviewTypeControl"
+                      (selectionChange)="selectedInterviewType($event.value)">
+                      <mat-option value="1">L1</mat-option>
+                      <mat-option value="2">L2</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+                <div
+                  class="col-sm-{{halfGridWidth}} col-md-{{halfGridWidth}} col-lg-{{halfGridWidth}} col-xl-{{halfGridWidth}}">
+                  <mat-form-field appearance="outline" class="recruiterElements">
+                    <mat-label>Technology</mat-label>
+                    <mat-select placeholder="Select Technology" formControlName="technologyControl"
+                      (selectionChange)="selectedTechnology($event.value)">
+                      <mat-option *ngFor="let tech of technologyArray" [value]="tech.id">{{tech.name}}</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div *ngIf="recruiterFlag" class="row">
+
+                <div
+                  class="bu_interviewer col-sm-{{halfGridWidth}} col-md-{{halfGridWidth}} col-lg-{{halfGridWidth}} col-xl-{{halfGridWidth}}">
+                  <mat-form-field appearance="outline" class="recruiterElements">
+                    <mat-label>Organization</mat-label>
+                    <mat-select placeholder="Select Organization" (selectionChange)="selectedBu($event.value)"
+                      formControlName="buControl">
+                      <mat-option *ngFor="let bu of buArray" [value]="bu.id">{{bu.name}}</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+
+                <div
+                  class="bu_interviewer col-sm-{{halfGridWidth}} col-md-{{halfGridWidth}} col-lg-{{halfGridWidth}} col-xl-{{halfGridWidth}}">
+                  <mat-form-field appearance="outline" class="recruiterElements">
+                    <mat-label>Interviewer</mat-label>
+                    <mat-select placeholder="Select Interviewer" formControlName="interviewerControl">
+                      <mat-option *ngFor="let i of interviewerArray" [value]="i.id">{{i.value}}</mat-option>
+                      <mat-option *ngIf="interviewerArray.length === 0" [value]='null'>No Interviewer Found</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                  <mat-form-field class="dialog-full-width" appearance="outline" class="recruiterElements">
+                    <mat-label>Comments</mat-label>
+                    <textarea matInput placeholder="Leave a comment" formControlName="comments"></textarea>
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div
+                class="col-sm-{{halfGridWidth}} col-md-{{halfGridWidth}} col-lg-{{halfGridWidth}} col-xl-{{halfGridWidth}}"
+                style="text-align: center;">
+                <button class="btn btn-danger cancel" type="reset" (click)="close()">Cancel</button>
+              </div>
+              <div
+                class="col-sm-{{halfGridWidth}} col-md-{{halfGridWidth}} col-lg-{{halfGridWidth}} col-xl-{{halfGridWidth}}"
+                style="text-align: center;">
+                <button class="btn btn-primary" type="submit" [disabled]="!saveSlotForm.valid">Submit</button>
+              </div>
+            </div>
+          </form>
+
+
+        </mat-card-content>
+      </mat-card>
+
+    </div>
+
+
+
+
+
+    <div *ngIf="events.length !== 0" style="min-height: 385px;"
+      class="col-sm-{{tabWidth}} col-md-{{tabWidth}} col-lg-{{tabWidth}} col-xl-{{tabWidth}}"
+      style="padding: 8px;padding-right: 0px;">
+
+
+      <mat-card style="height:100%">
+
+        <mat-card-content>
+          <mat-tab-group [selectedIndex]="tabIndex">
+            <mat-tab *ngFor="let tab of tabs; let index = index" [label]="tab.value">
+              <ng-template mat-tab-label>
+                <mat-icon [style.color]="tab.color">check_circle</mat-icon>
+                {{tab.value}}
+                <sup *ngIf="tab.slotCount > 0">
+                  <ion-badge class="cal-day-badge badgeClass" [style.background]="tab.background">{{tab.slotCount}}
+                  </ion-badge>
+                </sup>
+              </ng-template>
+
+              <div class="deleteContainer"
+                *ngIf="tab.value === 'Available' && tab.event.length > 1 && !pastDateDialog && !multiDelete">
+                <div class="row" style="margin-right: 0px;margin-left: 0px;">
+                  <div class="col-sm-5 col-md-5 col-lg-5 col-xl-5 textCentreAlign">
+                    <mat-slide-toggle style="padding-top: 4%;" [color]="primary" (change)="showCheckBoxfn(tab.event)">
+                      Multiple Delete
+                    </mat-slide-toggle>
+                  </div>
+                  <div class="col-sm-3 col-md-3 col-lg-3 col-xl-3 textCentreAlign">
+                    <mat-checkbox color="primary" style="margin-top: 12%;" [(ngModel)]="checkBoxSelect
+                     " *ngIf="showselectAll" (change)="selectAll(tab.event)">
+                      <label class="selectAllLabel">Select All</label> </mat-checkbox>
+                  </div>
+                  <div class="col-sm-4 col-md-4 col-lg-4 col-xl-4 textCentreAlign">
+                    <button *ngIf="showDelete" class="btn btn-danger btnClass" (click)="deleteMultipleSlot()"
+                      mat-button>
+                      <mat-icon style="color:white;">delete</mat-icon>
+                      Delete
+                    </button>
+                  </div>
+                  <div class="alert alert-danger" role="alert"
+                    *ngIf="tab.value === 'Available' && !pastDateDialog  && showDeleteMessage">
+                    Please Select any slot to delete!
+                  </div>
+                </div>
+              </div>
+
+              <mat-accordion>
+
+                <div style="min-height: 415px;max-height: 415px">
+                  <ng-container
+                    *ngFor="let e of tab.event | paginate: { itemsPerPage: 6, currentPage: p, id : tab}; let i=index">
+                    <mat-expansion-panel hideToggle [style.background]="tab.color" style="margin: 1%;"
+                      [expanded]="step === i" (opened)="step=i;selectedtab(e, tab.value)" [@.disabled]="true"
+                      *ngIf="tab.value === e.status">
+                      <mat-expansion-panel-header>
+                        <mat-panel-title>
+                          {{e.formattedDate}}
+                        </mat-panel-title>
+                        <div>
+                          <mat-icon *ngIf="e.isBooked && todayDate > e.timestamp && !e.feedbackStatus && !recruiterFlag"
+                            pTooltip="feedback form" tooltipPosition="top"
+                            (click)="feedBack(e);$event.stopPropagation()">feedback</mat-icon>
+                          <mat-icon *ngIf="e.isBooked && todayDate > e.timestamp && e.feedbackStatus === 'Pass'"
+                            pTooltip="Candidate Passed" tooltipPosition="top"
+                            (click)="feedBack(e);$event.stopPropagation()">thumb_up</mat-icon>
+                          <mat-icon *ngIf="e.isBooked && todayDate > e.timestamp && e.feedbackStatus === 'Fail'"
+                            pTooltip="Candidate Failed" tooltipPosition="top"
+                            (click)="feedBack(e);$event.stopPropagation()">thumb_down</mat-icon>
+                          <mat-icon *ngIf="e.isBooked && todayDate > e.timestamp && e.feedbackStatus === 'On Hold'"
+                            pTooltip="Candidate OnHold" tooltipPosition="top"
+                            (click)="feedBack(e);$event.stopPropagation()">pan_tool</mat-icon>
+                          <span *ngIf="!e.interviewerRequired">
+                            <mat-icon *ngIf="!e.isBooked && todayDate < e.timestamp" pTooltip="Edit Slot"
+                              tooltipPosition="top" (click)="$event.stopPropagation();editSlot(e);step=0">create
+                            </mat-icon>
+                            <mat-icon *ngIf="!e.isBooked && todayDate < e.timestamp && !showIcon"
+                              style="color: rgba(223, 35, 35, 0.588);" pTooltip="Delete Slot" tooltipPosition="top"
+                              (click)="$event.stopPropagation();deleteSlot(e.calendarId);">delete
+                            </mat-icon>
+                            <mat-checkbox [(ngModel)]="e.isDeleteSelected"
+                              *ngIf="!e.isBooked && (todayDate < e.timestamp)  && showCheckbox"
+                              (change)="deleteSlotEvent($event, e)" (click)="$event.stopPropagation()">
+                            </mat-checkbox>
+                          </span>
+                        </div>
+                      </mat-expansion-panel-header>
+
+                      <table class="slotTable" *ngIf="!e.interviewerRequired" style="width: 115%; margin: 2%;">
+                        <tr>
+                          <th>Candidate Name</th>
+                          <td>{{e.candidateName ? e.candidateName: 'NA'}}</td>
+                        </tr>
+                        <hr>
+                        <tr>
+                          <th>Technology</th>
+                          <td>{{e.technologyName ? e.technologyName: 'NA'}}</td>
+                        </tr>
+                        <hr>
+                        <tr>
+                          <th>Interview Type</th>
+                          <td>{{e.interviewTypeName ? e.interviewTypeName: 'NA'}}</td>
+                        </tr>
+                        <hr>
+                        <tr>
+                          <th>Interviewer Name</th>
+                          <td>{{e.interviewerName ? e.interviewerName: 'NA'}}</td>
+                        </tr>
+                        <hr>
+                        <tr *ngIf="e.feedbackStatus">
+                          <th>Feedback Status</th>
+                          <td>{{e.feedbackStatus ? e.feedbackStatus: 'NA'}}</td>
+                        </tr>
+
+                      </table>
+
+                      <table class="interviewerRequiredTable" *ngIf="e.interviewerRequired"
+                        style="width: 124%; margin: 2%;">
+
+                        <tr>
+                          <th>Interviewer Name</th>
+                          <td>{{e.interviewerName ? e.interviewerName: 'NA'}}</td>
+                        </tr>
+                        <hr>
+                        <tr>
+                          <th>Interviewer EmpID</th>
+                          <td>{{e.interviewerEmpId ? e.interviewerEmpId: 'NA'}}</td>
+                        </tr>
+                        <hr>
+                        <tr>
+                          <th>Interviewer EmailID</th>
+                          <td>{{e.interviewerEmailId ? e.interviewerEmail: 'NA'}}</td>
+                        </tr>
+                        <hr>
+                        <tr>
+                          <th>Interviewer Grade</th>
+                          <td>{{e.interviewerGrade ? e.interviewerGrade: 'NA'}}</td>
+                        </tr>
+                        <hr>
+                        <tr>
+                          <th>Organization</th>
+                          <td>{{e.organization ? e.organization: 'NA'}}</td>
+                        </tr>
+
+                      </table>
+
+                    </mat-expansion-panel>
+                  </ng-container>
+                </div>
+                <pagination-controls *ngIf="tab.event.length > 6" [id]="tab" (pageChange)="p=$event">
+                </pagination-controls>
+
+
+
+
+              </mat-accordion>
+            </mat-tab>
+          </mat-tab-group>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>

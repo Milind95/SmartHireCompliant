@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <input matInput class="dateInputClass" (dateChange)="dateChanged($event)" [matDatepicker]="picker" [formControl]="date">
+    <mat-datepicker-toggle matSuffix [for]="picker">
+      <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+    </mat-datepicker-toggle>
+    <mat-datepicker [dateClass]="dateClass" #picker></mat-datepicker>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-tabs>
+    <ion-tab-bar slot="top">
+      <ion-tab-button tab="available">
+        <ion-icon style="color: grey" name="calendar"></ion-icon>
+        <ion-label id="available">Available</ion-label>
+        <ion-badge *ngIf="availableSlotCount > 0">{{availableSlotCount}}</ion-badge>
+      </ion-tab-button>
+      <ion-tab-button tab="booked">
+        <ion-icon style="color:rgba(255, 102, 102, 0.588235) " name="contacts"></ion-icon>
+        <ion-label id="booked">Booked</ion-label>
+        <ion-badge *ngIf="bookedSlotCount > 0">{{bookedSlotCount}}</ion-badge>
+      </ion-tab-button>
+      <ion-tab-button tab="interviewed">
+        <ion-icon style="color: rgba(102, 204, 153, 0.988235)" name="cloud-done"></ion-icon>
+        <ion-label id="interviewed">Interviewed</ion-label>
+        <ion-badge *ngIf="interviewedSlotCount > 0">{{interviewedSlotCount}}</ion-badge>
+      </ion-tab-button>
+      <ion-tab-button tab="panelAvailability" *ngIf="isRecruiter">
+        <ion-icon style="color: #ffc107" name="information-circle"></ion-icon>
+        <ion-label id="panelAvailability">Panel Availability</ion-label>
+        <ion-badge *ngIf="panelAvailabilitSlotCount > 0">{{panelAvailabilitSlotCount}}</ion-badge>
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs>
+
+  <ion-fab *ngIf="isPastDate" vertical="bottom" horizontal="end" slot="fixed" (click)="gotoBookingForm()">
+    <ion-fab-button>
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

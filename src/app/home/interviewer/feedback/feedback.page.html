@@ -1,0 +1,251 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title class="fontSize" id="assessment">Interview Assessment Workbook - L1</ion-title>
+    <!--code for showing tabs-->
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-slides pager="true" [options]="slideOpts">
+    <ion-slide class="heightAndAlign">
+      <!-- <h4>Candidate Detailes - I</h4> -->
+      <ion-card class="someMargin">
+        <ion-item color="light" class="dividerClass">
+          <ion-icon name="contacts" slot="start"></ion-icon>
+          <ion-label id="details" class="ion-text-uppercase">Candidate Details</ion-label>
+        </ion-item>
+
+        <ion-card-content class="zeroPadding">
+          <ion-list class="zeroPadding">
+            <ion-item>
+              <ion-grid class="zeroPadding">
+                <ion-row>
+                  <ion-col size-xs="6" size-sm="6">
+                    <ion-label id="candidateName" position="stacked">Candidate Name</ion-label>
+                    <ion-input disabled>{{candidateFormDetails?.candidateName}}</ion-input>
+                  </ion-col>
+                  <ion-col size-xs="6" size-sm="6">
+                    <ion-label id="interviewDate" position="stacked">Date of Interview</ion-label>
+                    <ion-input disabled>{{candidateFormDetails?.interviewDate}}</ion-input>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </ion-item>
+            <ion-item>
+              <ion-grid class="zeroPadding">
+                <ion-row>
+                  <ion-col size-xs="6" size-sm="6">
+                    <ion-label id="interviewedSkill" position="stacked">Interviewed Skills</ion-label>
+                    <ion-input disabled>{{candidateFormDetails?.skill}}</ion-input>
+                  </ion-col>
+                  <ion-col size-xs="6" size-sm="6">
+                    <ion-label id="interviewMode" position="stacked">Mode of Interview</ion-label>
+                    <ion-input disabled>{{candidateFormDetails?.interviewerId === 1 ? 'L1' : candidateFormDetails?.interviewerId === 2 ? 'L2'
+                      : null}}</ion-input>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </ion-item>
+            <ion-item>
+              <ion-label id="organization" position="stacked">Organisation</ion-label>
+              <ion-input disabled>{{candidateFormDetails?.organization}}</ion-input>
+            </ion-item>
+          </ion-list>
+        </ion-card-content>
+      </ion-card>
+
+      <ion-card class="someMargin">
+        <ion-item color="light" class="dividerClass">
+          <ion-icon name="man" slot="start"></ion-icon>
+          <ion-label id="interviewerDetails" class="ion-text-uppercase">Interviewer Details</ion-label>
+        </ion-item>
+
+        <ion-card-content class="zeroPadding">
+          <ion-list class="zeroPadding">
+            <ion-item>
+              <ion-grid class="zeroPadding">
+                <ion-row>
+                  <ion-col size-xs="6" size-sm="6">
+                    <ion-label id="interviewerName" position="stacked">Interviewer Name</ion-label>
+                    <ion-input disabled>{{candidateFormDetails?.interviewerName}}</ion-input>
+                  </ion-col>
+                  <ion-col size-xs="6" size-sm="6">
+                    <ion-label id="interviewerLevel" position="stacked">Level of Interviewer</ion-label>
+                    <ion-input disabled>{{candidateFormDetails?.grade}}</ion-input>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </ion-item>
+            <ion-item>
+              <ion-label id="employeeId" position="stacked">Employee Id</ion-label>
+              <ion-input disabled>{{candidateFormDetails?.interviewerId}}</ion-input>
+            </ion-item>
+          </ion-list>
+        </ion-card-content>
+      </ion-card>
+
+
+      <ion-card class="someMargin">
+        <ion-item color="light" class="dividerClass">
+          <ion-icon name="contacts" slot="start"></ion-icon>
+          <ion-label class="ion-text-uppercase">{{candidateDetailsII?.masterHeading}}</ion-label>
+        </ion-item>
+
+        <ion-card-content class="zeroPadding">
+          <ion-list class="zeroPadding">
+            <ion-item *ngFor="let itemDetails of candidateDetailsII?.feedbackSubFormDTOs">
+              <ion-label position="stacked">{{itemDetails.heading}}</ion-label>
+              <ion-input [disabled]="!itemDetails.isRequired || isFormEditable || !isInterviewer" [(ngModel)]="itemDetails.response"></ion-input>
+            </ion-item>
+          </ion-list>
+        </ion-card-content>
+      </ion-card>
+
+      <ion-note id="note" slot="end">Slide right to check technical evaluation</ion-note>
+    </ion-slide>
+
+
+
+    <ion-slide class="heightAndAlign" *ngFor="let table of technicalEvalutionArray; let i = index;">
+      <!-- <h4>Technical Evalution</h4> -->
+      <h5 class="technicalHeading">{{table.mainHeading}}</h5>
+      <ion-card class="someMargin" *ngFor="let techData of table.tableData; let i=index">
+        <ion-card-content class="zeroPadding">
+          <ion-list class="zeroPadding">
+
+            <ion-item-divider class="dividerClass">
+              <ion-item color="light" class="ionItemFullWidth">
+                <ion-label color="dark" position="stacked">{{techData.col1_heading}}</ion-label>
+                <ion-input disabled>{{techData.col1_description}}</ion-input>
+
+                <ion-icon [ngClass]="checkValidityForAdd(techData.col2_dynamic) ? 'enableClass' : 'disableClass'" class="iconClassCursor"
+                  *ngIf="techData.col2_selected !== null && !isFormEditable && isInterviewer" slot="end" name="add-circle"
+                  (click)="addTechRow(techData.col2_dynamic)"></ion-icon>
+
+                <ion-icon [ngClass]="checkValidityForMinus(techData.col2_dynamic) ? 'enableClass' : 'disableClass'" class="marginRight iconClassCursor"
+                  *ngIf="techData.col2_selected !== null && !isFormEditable && isInterviewer" slot="end" name="remove-circle"
+                  (click)="removeTechRow(techData.col2_dynamic)"></ion-icon>
+              </ion-item>
+            </ion-item-divider>
+
+            <ng-container *ngIf="techData.col2_selected === null">
+              <ion-item>
+                <ion-label position="stacked">{{techData.col2_heading}}</ion-label>
+                <ion-input disabled>{{techData.col2_description}}</ion-input>
+              </ion-item>
+
+              <ion-item>
+                <ion-label position="stacked">{{techData.col3_dropdownHint}}</ion-label>
+                <ion-select [(ngModel)]="techData.col3_response" [interfaceOptions]="customRatingOptions" interface="action-sheet" placeholder="Select Rating"
+                  [disabled]="isFormEditable || !isInterviewer">
+                  <ion-select-option *ngFor="let rating of feedbackRating" [value]="rating.id">{{rating.name}}</ion-select-option>
+                </ion-select>
+              </ion-item>
+
+              <ion-item>
+                <ion-label position="stacked">{{techData.col4_heading}}</ion-label>
+                <ion-textarea rows="1" cols="10" [(ngModel)]="techData.col4_response" [disabled]="isFormEditable || !isInterviewer" matInput
+                  placeholder="{{techData.col4_heading}}"></ion-textarea>
+              </ion-item>
+
+            </ng-container>
+
+            <ng-container *ngIf="techData.col2_selected !== null">
+              <ion-card class="someMargin" *ngFor="let dynamic of techData.col2_dynamic;let dIndex = index">
+                <ion-card-content class="zeroPadding">
+                  <ion-list *ngIf="dynamic.showRow || dynamic.col2_response !== '' " class="zeroPadding">
+
+                    <ion-item *ngIf="dynamic.col2_dataType === 'Dropdown'">
+                      <ion-label position="stacked">{{dynamic.col2_description}}
+                        <span *ngIf="dIndex === 0" class="mandatory">*</span>
+                      </ion-label>
+                      <ion-select [(ngModel)]="dynamic.col2_response" (ionChange)="selectedTechnology($event.value, dynamic.col2_formDetailId)"
+                        [interfaceOptions]="customTechnologyOptions" interface="action-sheet" placeholder="Select Technology"
+                        [disabled]="isFormEditable || !isInterviewer">
+                        <ion-select-option *ngFor="let technology of technologyArray" [value]="technology.id">{{technology.name}}</ion-select-option>
+                      </ion-select>
+                    </ion-item>
+
+                    <ion-item *ngIf="!dynamic.col2_dataType && dynamic.col2_response !== '' ">
+                      <ion-label position="stacked">{{dynamic.col2_heading}}
+                        <span *ngIf="dIndex === 0" class="mandatory">*</span>
+                      </ion-label>
+                      <ion-input disabled>{{dynamic.col2_description}}</ion-input>
+                    </ion-item>
+
+                    <ion-item>
+                      <ion-label position="stacked">{{dynamic.col3_dropdownHint}}
+                        <span *ngIf="dIndex === 0" class="mandatory">*</span>
+                      </ion-label>
+                      <ion-select [(ngModel)]="dynamic.col3_response" [interfaceOptions]="customRatingOptions" interface="action-sheet" placeholder="Select Rating"
+                        [disabled]="isFormEditable || !isInterviewer">
+                        <ion-select-option *ngFor="let rating of feedbackRating" [value]="rating.id">{{rating.name}}</ion-select-option>
+                      </ion-select>
+                    </ion-item>
+
+                    <ion-item>
+                      <ion-label position="stacked">{{dynamic.col4_heading}}
+                        <span *ngIf="dIndex === 0" class="mandatory">*</span>
+                      </ion-label>
+                      <ion-textarea rows="1" cols="10" [(ngModel)]="dynamic.col4_response" [disabled]="isFormEditable || !isInterviewer" matInput
+                        placeholder="{{dynamic.col4_heading}}"></ion-textarea>
+                    </ion-item>
+
+                  </ion-list>
+                </ion-card-content>
+              </ion-card>
+
+            </ng-container>
+          </ion-list>
+        </ion-card-content>
+      </ion-card>
+    </ion-slide>
+
+    <ion-slide class="heightAndAlign">
+      <!-- <h4>Interviewer Panel</h4> -->
+      <ion-card class="someMargin">
+        <ion-item color="light" class="dividerClass">
+          <ion-icon name="clipboard" slot="start"></ion-icon>
+          <ion-label class="ion-text-uppercase">{{dynamicFeedBackForm?.masterHeading}}</ion-label>
+        </ion-item>
+
+        <ion-card-content class="zeroPadding">
+          <ion-list class="zeroPadding">
+            <ion-item *ngFor="let feed of dynamicFeedBackForm?.feedbackSubFormDTOs">
+              <ion-label position="stacked">{{feed.heading}}</ion-label>
+              <ion-input type="{{feed.dataType}}" [(ngModel)]="feed.response" [disabled]="!feed.isRequired || isFormEditable || !isInterviewer"></ion-input>
+            </ion-item>
+          </ion-list>
+        </ion-card-content>
+      </ion-card>
+
+      <ion-card class="someMargin">
+        <ion-item color="light" class="dividerClass">
+          <ion-icon name="exit" slot="start"></ion-icon>
+          <ion-label id="finalSubmit" class="ion-text-uppercase">Final Submission</ion-label>
+        </ion-item>
+
+        <ion-card-content class="zeroPadding">
+          <ion-list class="zeroPadding">
+            <ion-item *ngIf="candidateFormDetails">
+              <ion-label id="feedbackStatus" position="stacked">Feedback Status
+                <span class="mandatory"> * </span>
+              </ion-label>
+              <ion-select [(ngModel)]="candidateFormDetails.feedbackStatus" [interfaceOptions]="customRemarkOptions" interface="action-sheet"
+                placeholder="Select Feedback Status" [disabled]="isFormEditable || !isInterviewer">
+                <ion-select-option *ngFor="let status of feedbackStatusData" [value]="status.id">{{status.name}}</ion-select-option>
+              </ion-select>
+            </ion-item>
+          </ion-list>
+        </ion-card-content>
+      </ion-card>
+
+      <ion-button id="submit" color="vibrant" [disabled]="isFormEditable || !isInterviewer" class="submitBtnClass" expand="block" fill="solid"
+        (click)="feedbackSubmit()">Submit</ion-button>
+
+    </ion-slide>
+  </ion-slides>
+</ion-content>

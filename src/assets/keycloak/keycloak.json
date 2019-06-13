@@ -1,0 +1,8 @@
+{
+  "realm": "Smart-Hire",
+  "auth-server-url": "http://localhost:8085/auth",
+  "ssl-required": "external",
+  "resource": "smarthire-frontend",
+  "public-client": true,
+  "confidential-port": 0
+}

@@ -1,0 +1,230 @@
+#mobile {
+    display:none;
+}
+#desktop {
+    display:block;
+}
+
+.fontSizeBtn{
+    font-size: 8px;
+}
+.fontSizeLabel{
+    font-size: 14px;
+    font-weight: bolder;
+    vertical-align: middle;
+}
+.alertWidth {
+    min-width: '500px' !important;
+}
+
+.rightIcon{
+    margin-left:-22px;
+}
+.leftIcon{
+   margin-right:-22px;
+}
+
+.calendarActions{
+    padding: 0px;
+    text-align: center;
+    line-height: 2;
+    font-weight: bold;
+    color: cornflowerblue;
+}
+.cursonPointer{
+    cursor: pointer;
+}
+
+h3{
+   text-align: left;
+}
+
+
+ion-content {
+   --ion-background-color:#F3F8F9;
+}
+
+.rightLabel.interviewer-view {
+   color: #337ab7;
+   padding-left: 10px;
+   font-size: 13px;
+}
+.leftLabel.interviewer-view {
+   color: #337ab7;
+   padding-left: 10px;
+   font-size: 13px;
+}
+.completeLabel.interviewer-view {
+   color: #337ab7;
+   padding-left: 10px;
+   font-size: 13px;
+}
+.completeRightLabel.interviewer-view {
+    color: #337ab7;
+    padding-left: 10px;
+    font-size: 13px;
+ }
+.right.interviewer-view{
+   height: 25px;
+   width: 25px;
+   background-color: grey;
+   border-radius: 50%;
+   display: inline-block;
+   margin-bottom: -10px;
+}
+.left.interviewer-view {
+   height: 25px;
+   width: 25px;
+   background-color: rgba(255, 102, 102, 0.588235294117647);
+   border-radius: 50%;
+   display: inline-block;
+   margin-bottom: -10px;
+}
+
+.complete.interviewer-view {
+   height: 25px;
+   width: 25px;
+   background-color: rgba(102, 204, 153, 0.988235294117647);
+   border-radius: 50%;
+   display: inline-block;
+   margin-bottom: -10px;
+}
+.completeright.interviewer-view {
+    height: 25px;
+    width: 25px;
+    background-color: #ffc107;
+    border-radius: 50%;
+    display: inline-block;
+    margin-bottom: -10px;
+ }
+
+.eventClass{
+    padding: 3%;
+    font-size: 12px;
+    text-align: center;
+    margin-bottom: 1px;
+}
+
+.eventContainer{
+    min-height: 80px;
+    max-height: 80px;
+    overflow-y: hidden
+}
+.eventContainer:hover{
+    min-height: 80px;
+    max-height: 80px;
+    overflow-y: auto
+}
+
+.eventClassBooked{
+    background: rgba(255, 102, 102, 0.588235294117647);
+    color: white;
+}
+.eventClassInterviewed{
+    background: rgba(102, 204, 153, 0.988235294117647);
+    color: white;
+}
+.eventClassAvailable{
+    background: grey;
+    color: white;
+}
+.interviewerClass{
+    background: #ffc107;
+    color: white;
+}
+
+.disableBg{
+    background: lightgrey;
+    opacity: 0.9;
+}
+.available{
+    background-color: grey;
+    margin: 2px;
+}
+.booked{
+    background-color: rgba(255, 102, 102, 0.588235294117647);
+    margin: 2px;
+}
+.interviewed{
+    background-color:rgba(102, 204, 153, 0.988235294117647);
+    margin: 2px;
+}
+.interviewerAvailability{
+    background-color: #ffc107;
+    margin: 2px;
+}
+.textAlignLeft{
+    text-align: left
+}
+
+::ng-deep .mat-form-field-infix{
+    border-top-width: 0px;
+    padding-bottom: 5px !important;
+  }
+
+.interviewerFilter{
+    width: 108%
+}
+
+#available{
+    margin-top: 4px;
+    margin-left: 3px;
+    background-color: grey;
+}
+#booked{
+    margin-top: 4px;
+    margin-left: 3px;
+    background-color:rgba(255, 102, 102, 0.588235294117647);
+}
+#interviewed{
+    margin-top: 4px;
+    margin-left: 3px;
+    background-color:rgba(102, 204, 153, 0.988235294117647);
+}
+
+#panelAvailability{
+    margin-top: 4px;
+    margin-left: 3px;
+    // background-color:#ffc107;
+}
+
+::-webkit-scrollbar {
+    width: 4px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #37abdd; 
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+  }
+
+  
+
+
+@media (min-width: 240px) and (max-width: 768px) {
+    #desktop {
+        display:none;
+    }
+    #mobile {
+        display:block;
+    }
+
+    .calendarLabelMobile{
+        text-align: center;
+        align-self: center;
+        font-weight: bold;
+    }
+    .paddingAdjustment{
+        padding-right: 5px;
+    padding-left: 5px;
+    }
+}

@@ -1,0 +1,289 @@
+.dialog-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+  }
+  
+  .dialog-full-width {
+    width: 100%;
+  }
+.fullMatFormField{
+  width: 100%;
+}
+.btn1{
+  background-color: grey;
+  padding-right: 15px;
+  padding-top:10px;
+  font:14px;
+
+}
+
+.btn_day {
+  display: block;
+    height: 22px;
+    width: 22px;
+    border-radius: 50%;
+    border: 2px solid #007bff;
+    background: #007bff;
+    color: aliceblue;
+    text-align: center;
+}
+
+.multiDaysClass{
+    margin: 1%;
+    background: #59a9ff;
+    color: white;
+}
+
+.tdClass{
+  padding: 6%;
+}
+
+
+.slotPicked{
+  background: #007bff;
+  color: white;
+  text-align: -webkit-center;
+}
+.slotUnPicked{
+  background: white;
+  color: black;
+  text-align: -webkit-center;
+}
+.card{
+  width: 61px;
+  height: 40px;
+  display: inline-block;
+  margin-right: 7%;
+}
+.col-sm-6{
+    position: relative;
+    width: 100%;
+    padding-right: 15px;
+    padding:9.8px,7.98px;
+}
+.col-md-6{
+  position: relative;
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  padding-top: 20px;
+}
+.col-lg-6{
+  position: relative;
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  padding-top: 20px;
+}
+.col-xl-6{
+  position: relative;
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  padding-top: 20px;
+}
+.btn-danger{
+ margin-left:70px;
+}
+.fullMatFormField{
+  margin-top: -33px;
+}
+.check_circle{
+  color:  rgb(150, 147, 147);
+}
+.check_circle3{
+  color: rgba(146, 130, 129, 0.062);
+}
+.check_circle2{
+ color: rgba(102, 204, 153, 0.988235294117647);
+}
+.check_circle1{
+  color: grey;
+}
+.formControlInputs{
+  min-height: 415px;
+}
+// .pastDate{
+//   width: 736px;
+//   height: 444px;
+// }
+
+// .futureDate{
+//   width: 1050px;
+// }
+// .futureDateNone{
+//   width: 400px;
+// }
+
+::ng-deep .mat-form-field-infix{
+  border-top-width: 0px;
+}
+
+.bu_interviewer{
+  padding-top: 0px;
+}
+
+.recruiterElements{
+  width: 100%;
+}
+
+.slotTable hr{
+  width: 117%;
+}
+
+.interviewerRequiredTable hr{
+  width: 151%;
+}
+
+hr{
+  margin-top: 4px !important;
+  margin-bottom: 4px !important;
+}
+.fromDateWidth{
+  width: 80%;
+  vertical-align: super;
+}
+.timeIconClass{
+  display: inline-block;
+  margin: -4%;
+}
+
+// @media (min-width: 768px) and (max-width: 1023px) {
+//   .pastDate{
+//     width: 736px;
+//     height: 444px;
+//   }
+  
+//   .futureDate{
+//     width: 1050px;
+//   }
+//   .futureDateNone{
+//     width: 400px;
+//   }
+// }
+// @media (min-width: 1024px) and (max-width: 1440px) {
+//   .pastDate{
+//     width: 736px;
+//     height: 444px;
+//   }
+  
+//   .futureDate{
+//     width: 1050px;
+//   }
+//   .futureDateNone{
+//     width: 400px;
+//   }
+// }
+
+
+.mat-dialog-container {
+  padding: 12px !important;
+}
+
+.ngx-pagination {
+  text-align: center;
+}
+
+.mat-card-header-text {
+  margin: auto !important;
+}
+
+.mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle {
+  border-color: #007bff;
+}
+
+.mat-radio-button.mat-accent .mat-radio-inner-circle, .mat-radio-button.mat-accent .mat-radio-ripple .mat-ripple-element:not(.mat-radio-persistent-ripple), .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-persistent-ripple, .mat-radio-button.mat-accent:active .mat-radio-persistent-ripple {
+  background-color: #007bff;
+}
+
+.mat-slide-toggle.mat-checked .mat-slide-toggle-thumb {
+  background-color: #007bff;
+}
+
+.mat-slide-toggle.mat-checked .mat-slide-toggle-bar {
+  background-color: rgb(89, 169, 255);
+}
+
+.mat-slide-toggle .mat-slide-toggle-ripple {
+  opacity: 0;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+.multidelete{
+  font-size:medium;
+}   
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #37abdd; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+
+::ng-deep.mat-checkbox-checked.mat-accent .mat-checkbox-background, .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
+  background-color: #73c4e7 !important;
+}
+
+.deleteContainer{
+  padding: 1%;
+  background: #dfdede;
+  text-align: center;
+  margin: 1%;
+  font-size:104%;
+}
+.selectAllLabel{
+margin-bottom: auto;
+margin-top: 12%;
+}
+
+.textCentreAlign{
+  text-align: center
+}
+
+.btnClass{
+  // padding: 4px;
+  font-size: 95%;
+  text-align: center;
+  vertical-align: middle;
+  background-color: #dc3545;
+  color:white;
+  // margin-left: 0%;
+}
+
+.alignCentreVertically{
+  align-self: center;
+}
+::ng-deep .mat-checkbox-background {
+  border-color: #007bff;
+  background-color: #007bff;
+}
+.textRightAlign{
+  text-align: right;
+}
+
+.badgeClass{
+  padding: 2px 4px;
+  font-size: 10px;
+}
+
+.alertClass{
+  margin: 0%;
+  padding: 0;
+}
+
+.alertContentClass{
+  margin: 0;
+  padding: 3%;
+  text-align: center;
+}

@@ -1,0 +1,311 @@
+<ngx-spinner bdColor="rgba(51,51,51,0.8)"  size="medium"  color="#fff"  type="timer">
+  <p style="font-size: 20px; color: white">Loading...</p>
+    </ngx-spinner>
+    <ion-header>
+      <ion-toolbar>
+        <div>
+          <app-header></app-header>
+        </div>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <ngb-carousel [interval]="0" style="margin-top: 1%;">
+              <ng-template ngbSlide>
+
+
+                <div style="height: 680px;width: 100%;background: #dee2e6">
+                  <div class="container">
+                    <div class="row">
+                      <div class="col-lg-12" style="padding-right: 0px;padding-left: 0px;">
+                        <h5 class="candidateDetails1" style="color:#075b9b; background-color: #73c4e7 ;font-size: 112%;font-weight: bold ; width: 100%;  height: 25px;
+                padding: 3px" class="text-center">Candidate Details 1</h5>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-lg-5">
+                        <label class="control-label" id="candidateName" for="Candidate details">Candidate Name</label>
+                        <div>
+                          <input type="text" disabled class="form-control" [value]="candidateFormDetails.candidateName" placeholder="Enter Candidate details">
+                        </div>
+                      </div>
+                      <div class="col-lg-2"></div>
+                      <div class="col-lg-5">
+                        <label class="control-label" id="dateOfInterview" for="Date of interview">Date of interview</label>
+                        <div>
+                          <input type="text" style="margin-bottom: 1%;" disabled [value]="candidateFormDetails.interviewDate" class="form-control"
+                            id="Date of interview" placeholder="Enter Date of interview">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-lg-5">
+                        <label class="control-label" id="interviewedSkill" for="Interviewed Skill">Interviewed Skill</label>
+                        <div>
+                          <input type="text" class="form-control" disabled id="Interviewed Skill" [value]="candidateFormDetails.skill" placeholder="Enter Interviewed Skill">
+                        </div>
+                      </div>
+                      <div class="col-lg-2"></div>
+                      <div class="col-lg-5">
+                        <label class="control-label" id="organization" for="BU">Organization</label>
+                        <div>
+                          <input type="text" class="form-control" disabled id="Interviewed Skill" [value]="candidateFormDetails.organization" placeholder="Enter Interviewed Skill">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-lg-5">
+                        <label class="control-label"  id="modeOfInterview" for="BU">Mode of Interview</label>
+                        <div>
+                          <mat-select class="form-control" [disabled]="isFormEditable || !isInterviewer" placeholder="Select Mode of Interview" [(ngModel)]="candidateFormDetails.participationId">
+                            <mat-option  id="modeName" *ngFor="let mode of interviewModeArray" [value]="mode.id">{{mode.name}}</mat-option>
+                          </mat-select>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row" style="margin-top: 1%">
+                      <div class="col-lg-12" style="padding-right: 0px;padding-left: 0px;">
+                        <h5 style="color:#075b9b; background-color: #73c4e7 ;font-size: 112%;font-weight: bold ; width: 100%;  height: 25px;
+                  padding: 3px" id="candidateDetails2" class="text-center">Candidate Details 2</h5>
+                      </div>
+                    </div>
+                    <div class="row" *ngFor="let detail of candidateFormDetails2?.feedbackSubFormDTOs">
+                      <div class="col-lg-5">
+                        <label class="control-label" id="detail" for="Name of Interviewer">{{detail.heading}}</label>
+                        <div>
+                          <input [type]="detail.dataType" on-focus="tableDetails" type="text" [(ngModel)]="detail.response" class="form-control" [disabled]="isFormEditable || !isInterviewer"
+                            placeholder="{{detail.heading}}">
+                        </div>
+                      </div>
+                    </div>
+
+
+                    <div class="row" style="margin-top: 1%">
+                      <div class="col-lg-12" style="padding-right: 0px;padding-left: 0px;">
+                        <h5 style="color:#075b9b; background-color: #73c4e7 ;font-size: 112%;font-weight: bold ; width: 100%;  height: 25px;
+                  padding: 3px"  id="interviewPanel" class="text-center">Interviewer Panel</h5>
+                      </div>
+                    </div>
+                    <!-- <div class="row">
+                      <div class="col-lg-5">
+                        <label class="control-label" for="Name of Interviewer">Interviewer Name</label>
+                        <div>
+                          <input on-focus="tableDetails" [value]="candidateFormDetails.interviewerName" type="text" class="form-control" id="Name of Interviewer"
+                            disabled placeholder="Enter Name of Interviewer">
+                        </div>
+                      </div>
+                      <div class="col-lg-2"></div>
+                      <div class="col-lg-5">
+                        <label class="control-label" for="Level of Interviewer">Level of Interviewer</label>
+                        <div>
+                          <input type="text" class="form-control" [value]="candidateFormDetails.grade" style="margin-bottom: 1%;" id="Level of Interviewer"
+                            disabled placeholder="Enter Level of Interviewer">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-lg-5">
+                        <label class="control-label" for="Employee #">Employee #</label>
+                        <div>
+                          <input type="text" class="form-control" [value]="candidateFormDetails.interviewerId" id="Employee #" placeholder="Enter Employee #"
+                            disabled>
+                        </div>
+                      </div>
+                    </div> -->
+
+
+                    <div class="row">
+                      <div class="col-lg-5">
+                        <label class="control-label" id="interviewerName" for="Name of Interviewer">Interviewer Name</label>
+                        <div>
+                          <input on-focus="tableDetails" [value]="candidateFormDetails.interviewerName" type="text" class="form-control" id="Name of Interviewer"
+                            disabled placeholder="Enter Name of Interviewer">
+                        </div>
+                      </div>
+                      <div class="col-lg-2"></div>
+                      <div class="col-lg-5" id="interviewerLevel">
+                        <label class="control-label" id="abc" for="Level of Interviewer">Level of Interviewer</label>
+                        <div>
+                          <input type="text" class="form-control" [value]="candidateFormDetails.grade" style="margin-bottom: 1%;" id="Level of Interviewer"
+                            disabled placeholder="Enter Level of Interviewer">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-lg-5">
+                        <label class="control-label" id="employee" for="Employee #">Employee #</label>
+                        <div>
+                          <input type="text" class="form-control" [value]="candidateFormDetails.interviewerId" id="Employee #" placeholder="Enter Employee #"
+                            disabled>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+
+                <div class="carousel-caption">
+                </div>
+
+              </ng-template>
+              <ng-template ngbSlide>
+
+                <div style="height: auto;width: 100%;background: #dee2e6">
+                  <div class="container">
+                    <div class="row">
+                      <div class="col-lg-12" style="padding-right: 0px;padding-left: 0px;">
+                        <h5 style="color:#075b9b; background-color: #73c4e7 ;font-size: 112%;font-weight: bold ; width: 100%;  height: 25px;
+                    padding: 3px" id="technicalEvalution" class="text-center">Technical Evaluation</h5>
+                      </div>
+                    </div>
+                    <ng-container *ngFor="let tech of technicalEvalutionArray">
+                      <div class="row">
+                        <div class="col-lg-12" style="padding-right: 0px;padding-left: 0px;">
+                          <h5 class="tableHeading">{{tech.mainHeading}}</h5>
+                        </div>
+                      </div>
+                      <div class="row" *ngFor="let techData of tech.tableData; let i=index">
+                        <ng-container *ngIf="techData.col2_selected === null">
+                          <div class="col-lg-3 dataBorder">
+                            <span>{{techData.col1_description}}</span>
+                          </div>
+                          <div class="col-lg-3 dataBorder">
+                            <span *ngIf="!techData.col2_dataType">{{techData.col2_description}}</span>
+
+                          </div>
+
+                          <div class="col-lg-3 dataBorder">
+                            <mat-form-field appearance="outline" class="techArea">
+                              <mat-label>{{techData.col3_dropdownHint}}</mat-label>
+                              <mat-select [(ngModel)]="techData.col3_response" placeholder="techData.col3_dropdownHint" [disabled]="isFormEditable || !isInterviewer">
+                                <mat-option *ngFor="let rating of feedbackRating" [value]="rating.id">{{rating.name}}</mat-option>
+                              </mat-select>
+                            </mat-form-field>
+                          </div>
+                          <div class="col-lg-3 dataBorder">
+                            <mat-form-field class="dialog-full-width" appearance="outline" class="techArea">
+                              <mat-label>{{techData.col4_heading}}</mat-label>
+                              <textarea [(ngModel)]="techData.col4_response" [disabled]="isFormEditable || !isInterviewer" matInput placeholder="{{techData.col4_heading}}"></textarea>
+                            </mat-form-field>
+                          </div>
+                        </ng-container>
+
+                        <ng-container *ngIf="techData.col2_selected !== null">
+                          <ng-container *ngFor="let dynamic of techData.col2_dynamic;let dIndex = index">
+                            <ng-container *ngIf="dynamic.showRow || dynamic.col2_response !== '' ">
+
+                              <div [ngClass]="{'addedTechRowClass': indexArray.length !== 0 }" class="col-lg-3 dataBorder">
+                                <span *ngIf="dIndex === 0">{{techData.col1_description}}</span>
+                              </div>
+                              <div class="col-lg-3 dataBorder">
+
+                                <div *ngIf="dynamic.col2_dataType === 'Dropdown' ">
+                                  <mat-form-field appearance="outline" class="techArea" style="width: 76%;">
+                                    <mat-label>{{dynamic.col2_description}}</mat-label>
+                                    <mat-select (selectionChange)="selectedTechnology($event.value, dynamic.col2_formDetailId)" [disabled]="isFormEditable || !isInterviewer"
+                                      [(ngModel)]="dynamic.col2_response" placeholder="Select Technology">
+                                      <mat-option *ngFor="let tech of technologyArray" [value]="tech.id">{{tech.name}}</mat-option>
+                                    </mat-select>
+                                  </mat-form-field>
+
+                                  <i style="color: red" id="techError" *ngIf="dIndex === 0 && candidateFormDetails.feedbackStatus === 0 ">*</i>
+
+                                  <!--[ngClass]="setAddIconClass(techData.col2_dynamic)"-->
+                                  <!-- [ngClass]="setMinusIconClass(techData.col2_dynamic)" -->
+
+                                  <mat-icon [ngClass]="checkValidityForAdd(techData.col2_dynamic) ? 'enableClass' : 'disableClass'" *ngIf="!isFormEditable && dIndex == 0 && isInterviewer"
+                                    class="button" id="addTechRow" (click)="addTechRow(techData.col2_dynamic, dIndex)">add_circle</mat-icon>
+
+                                  <mat-icon [ngClass]="checkValidityForMinus(techData.col2_dynamic) ? 'enableClass' : 'disableClass'" *ngIf="dIndex == 0 && isInterviewer && !isFormEditable"
+                                    class="button" id="removeTechRow" (click)="removeTechRow(techData.col2_dynamic,dynamic, dIndex)">remove_circle</mat-icon>
+
+                                </div>
+                                <span *ngIf="!dynamic.col2_dataType && dynamic.col2_response !== '' ">{{dynamic.col2_description}}</span>
+
+                              </div>
+                              <div class="col-lg-3 dataBorder">
+                                <mat-form-field appearance="outline" class="techArea">
+                                  <mat-label>{{dynamic.col3_dropdownHint}}</mat-label>
+                                  <mat-select [(ngModel)]="dynamic.col3_response" [disabled]="isFormEditable || !isInterviewer" placeholder="dynamic.col3_dropdownHint">
+                                    <mat-option *ngFor="let rating of feedbackRating" [value]="rating.id">{{rating.name}}</mat-option>
+                                  </mat-select>
+                                </mat-form-field>
+                              </div>
+                              <div class="col-lg-3 dataBorder">
+                                <mat-form-field class="dialog-full-width" appearance="outline" class="techArea">
+                                  <mat-label>{{dynamic.col4_heading}}</mat-label>
+                                  <textarea [(ngModel)]="dynamic.col4_response" [disabled]="isFormEditable || !isInterviewer" matInput placeholder="{{dynamic.col4_heading}}"></textarea>
+                                </mat-form-field>
+                              </div>
+                            </ng-container>
+                          </ng-container>
+                        </ng-container>
+
+                      </div>
+
+                    </ng-container>
+
+
+                  </div>
+                </div>
+
+                <div class="carousel-caption">
+                </div>
+
+              </ng-template>
+              <ng-template ngbSlide>
+                <div class="container" style="height: 525px;width: 100%;background: #dee2e6">
+                  <div class="row">
+                    <div class="col-lg-12" style="padding-right: 0px;padding-left: 0px;">
+                      <h5 style="color:#075b9b; background-color: #73c4e7 ;font-size: 112%;font-weight: bold ; width: 100%;  height: 25px;
+                        padding: 3px" class="text-center">Overall Remarks</h5>
+                    </div>
+                  </div>
+                  <div class="row" *ngFor="let feed of dynamicFeedBackForm?.feedbackSubFormDTOs">
+                    <div class="col-lg-5">
+                      <label class="control-label" for="Name of Interviewer">{{feed.heading}}</label>
+                      <div>
+                        <input on-focus="tableDetails" type="text" [(ngModel)]="feed.response" class="form-control" [disabled]="isFormEditable || !isInterviewer"
+                          placeholder="{{feed.heading}}">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row" style="margin-top: 1%">
+                    <div class="col-lg-12" style="padding-right: 0px;padding-left: 0px;">
+                      <h5 style="color:#075b9b; background-color: #73c4e7 ;font-size: 112%;font-weight: bold ; width: 100%;  height: 25px;
+                      padding: 3px" class="text-center">Final Submission</h5>
+                    </div>
+                  </div>
+
+                  <div *ngIf="allowSubmitForm" class="alert alert-warning">Please filled the marked fields!</div>
+
+                  <div class="row">
+                    <div class="col-lg-5">
+                      <mat-form-field appearance="outline" class="techArea">
+                        <mat-label>Feedback Status</mat-label>
+                        <mat-select (selectionChange)="feedbackRatingChanged($event)" id="feedbackRating"  [(ngModel)]="candidateFormDetails.feedbackStatus" [disabled]="isFormEditable || !isInterviewer" placeholder="Select Status">
+                          <mat-option *ngFor="let status of feedbackStatus" [value]="status.id">{{status.name}}</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                      <i style="color: red" id="techError">*</i>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-lg-5 col-md-5 col-xs-5"></div>
+                    <div class="col-lg-2 col-md-2 col-xs-2" style="margin-left: 3.5%;">
+                      <button class="btn btn-primary" *ngIf="isInterviewer" type="button" [disabled]="isFormEditable" id="feedbackSubmit"
+                        (click)="feedbackSubmit()">Submit</button>
+                    </div>
+                  </div>
+                </div>
+              </ng-template>
+
+            </ngb-carousel>
+          </div>
+        </div>
+      </div>
+
+    </ion-content>

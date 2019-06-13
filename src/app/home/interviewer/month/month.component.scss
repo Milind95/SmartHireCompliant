@@ -1,0 +1,86 @@
+.monthClass{
+  
+}
+
+.ion-color-warning {
+    --ion-color-base: #f7660f !important;
+}
+.disableBg{
+    background: lightgrey;
+    opacity: 0.9;
+}
+
+ion-badge{
+    font-size:9px;
+    margin-top:-20%;
+    color:black;
+}
+.eventClass{
+    width: 5px;
+    height: 5px;
+    background: red
+}
+
+.cal-month-view .cal-day-cell {
+    background: lightgrey
+}
+.eventContainer{
+    min-height: 30px;
+    text-align: right;
+}
+
+.badge{
+    display: inline-block;
+    min-width: 10px;
+    padding: 3px 4px;
+    font-size: 10px;
+    line-height: 1;
+    color: white;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    border-radius: 10px;
+}
+
+.available{
+    background-color: grey;
+    margin: 2px;
+}
+.booked{
+    background-color: rgba(255, 102, 102, 0.588235294117647);
+    margin: 2px;
+}
+.interviewed{
+    background-color:rgba(102, 204, 153, 0.988235294117647);
+    margin: 2px;
+}
+.interviewerAvailability{
+    background-color: #ffc107;
+    margin: 2px;
+}
+
+.availableIcon{
+    background-color: grey;
+    color: white;
+    font-size: 60%;
+}
+.bookedIcon{
+    background-color: rgba(255, 102, 102, 0.588235294117647);
+    color: white;
+    font-size: 60%;
+}
+.interviewedIcon{
+    background-color:rgba(102, 204, 153, 0.988235294117647);
+    color: white;
+    font-size: 60%;
+}
+.interviewerAvailabilityIcon{
+    background-color: #ffc107;
+    color: white;
+    font-size: 60%;
+
+}
+.legends{
+    text-align: right;
+    margin-top: 1%
+}
